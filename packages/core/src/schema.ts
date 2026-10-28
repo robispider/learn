@@ -59,6 +59,13 @@ export const ToyBlockSchema = z.object({
   config: z.unknown(),
 });
 
+/** A lab challenge: a Try-style step with a title and a difficulty, for "change it and see". */
+export const ChallengeSchema = StepSchema.extend({
+  id: z.string(),
+  title: I18nSchema,
+  level: z.number().int().min(1).max(3),
+});
+
 export const TopicSchema = z.object({
   id: z.string(),
   title: I18nSchema,
@@ -81,6 +88,8 @@ export const TopicSchema = z.object({
   try: z
     .array(ToyBlockSchema.extend({ title: I18nSchema.optional(), steps: z.array(StepSchema).min(1) }))
     .min(1),
+  /** 🎛️ Experiment: free play with knobs, plus challenges that add complexity step by step. */
+  lab: ToyBlockSchema.extend({ challenges: z.array(ChallengeSchema).default([]) }).optional(),
   practice: z.object({
     templates: z.array(z.object({ id: z.string(), weight: z.number().positive().default(1) })).min(1),
     count: z.number().int().min(3).max(20).default(8),
@@ -121,7 +130,7 @@ export const CharacterRefSchema = z.object({
   bubble: z.enum(['yellow', 'pink', 'blue', 'lavender', 'green']),
 });
 
-export const ModeSchema = z.enum(['explore', 'try', 'practice', 'learn', 'challenge']);
+export const ModeSchema = z.enum(['explore', 'try', 'lab', 'practice', 'learn', 'challenge']);
 
 export const BookSchema = z.object({
   id: z.string(),
@@ -145,6 +154,7 @@ export type Line = z.infer<typeof LineSchema>;
 export type Ask = z.infer<typeof AskSchema>;
 export type Choose = z.infer<typeof ChooseSchema>;
 export type Step = z.infer<typeof StepSchema>;
+export type Challenge = z.infer<typeof ChallengeSchema>;
 export type Topic = z.infer<typeof TopicSchema>;
 export type TopicStub = z.infer<typeof TopicStubSchema>;
 export type Chapter = z.infer<typeof ChapterSchema>;

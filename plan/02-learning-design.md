@@ -10,10 +10,13 @@ Book            e.g. Class 3 Math
      └─ Topic   e.g. ৬.৫ ভাগশেষ
          ├─ Explore   story hook + free play with a toy
          ├─ Try       guided steps, hints, character dialogue
-         ├─ Practice  generated, adaptive items
-         └─ Learn     the rule card + key words + link to the book page
+         ├─ Lab       🎛️ change the parts (knobs), ▶ play, and a ladder of challenges ★ → ★★★
+         ├─ Learn     the rule card + key words + the example playing itself + book page
+         └─ Practice  generated, adaptive items (check understanding)
      Chapter end: Challenge (mixed quest) + "make your own" task
 ```
+
+**Lab ("বদলে দেখি", experiment).** Every knob of the toy is unlocked: more biscuits, more children, another fruit, bigger packs. Challenges add complexity in steps (★ do it, ★★ change one thing and do it, ★★★ work backwards or find the limit, e.g. "biggest remainder when sharing among 4"). Many are solved by *changing the parts*, not just playing, and every challenge is checked automatically to be reachable (`pnpm validate`). The lab is not a book mode, so it uses the app's own symbol.
 
 **Mode symbols are per-book configuration.** NCTB books mark activities with their own icons. In Class 3 Math these are ❓ মূল প্রশ্ন → Explore, ▲ কাজ → Try, ■ অনুশীলন → Practice and ● নিজে করি → Challenge. The shell shows the book's own symbols and names, so kids and teachers recognise them.
 

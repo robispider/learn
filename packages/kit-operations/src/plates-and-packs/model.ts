@@ -54,6 +54,7 @@ export type Action =
   | { type: 'setTotal'; value: number }
   | { type: 'setPlates'; value: number }
   | { type: 'setSize'; value: number }
+  | { type: 'setItem'; value: ItemKind }
   | { type: 'reset' };
 
 export const LIMITS = { total: [0, 30], plates: [1, 6], size: [1, 6] } as const;
@@ -218,6 +219,8 @@ export function reducer(s: State, a: Action): State {
       const size = clamp(a.value, LIMITS.size);
       return { ...s, size, where: s.where.map(() => null), packs: 0, notice: null };
     }
+    case 'setItem':
+      return ITEM_KINDS.includes(a.value) ? { ...s, config: { ...s.config, item: a.value } } : s;
     case 'reset':
       return { ...s, where: s.where.map(() => null), packs: 0, notice: null };
   }
@@ -245,6 +248,7 @@ export const expectSchema = z
     rounds: z.number().int().optional(),
     total: z.number().int().optional(),
     plates: z.number().int().optional(),
+    size: z.number().int().optional(),
   })
   .strict();
 export type Expect = z.infer<typeof expectSchema>;
@@ -258,5 +262,6 @@ export function check(s: State, raw: unknown): boolean {
   if (e.rounds !== undefined && sum.rounds < e.rounds) return false;
   if (e.total !== undefined && s.total !== e.total) return false;
   if (e.plates !== undefined && s.plates !== e.plates) return false;
+  if (e.size !== undefined && s.size !== e.size) return false;
   return true;
 }

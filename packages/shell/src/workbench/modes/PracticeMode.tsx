@@ -24,13 +24,21 @@ import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useBook } from '../../book';
 import { DialogueLine } from '../../components/Dialogue';
-import { ToyPanel } from '../../components/ToyPanel';
 import { useLang, useT } from '../../hooks';
 import { PRAISE, S } from '../../strings';
+import { Slot, useHintButton } from '../context';
+import { PanelHead } from '../PanelBits';
+import { ToyStage, useLessonToy } from '../ToyStage';
 
 type Done = { firstTry: boolean; usedWorked: boolean };
 
-/** ■ অনুশীলন: generated items, adaptive level, hint ladder, misconception feedback, stars and a sticker. */
+/** The item's picture: the toy, picture-only, in the stage. */
+function Picture({ toyId, config }: { toyId: string; config: unknown }) {
+  const lt = useLessonToy(toyId, config);
+  return <ToyStage lt={lt} readOnly toolbar={false} code={false} />;
+}
+
+/** ■ অনুশীলন (check understanding): generated items, adaptive level, hint ladder, misconception feedback, stars and a sticker. */
 export function PracticeMode({ topic }: { topic: Topic }) {
   const book = useBook();
   const lang = useLang();
@@ -53,6 +61,11 @@ export function PracticeMode({ topic }: { topic: Topic }) {
 
   const index = results.length;
   const solved = !!check?.correct || gaveUp;
+  const moreHint = () => {
+    setHint((h) => h + 1);
+    if (hint + 1 >= 2 && item.picture) setPicture(true);
+  };
+  useHintButton(!end && !solved && hint < 3 ? moreHint : null);
 
   const load = (next: PracticeItem) => {
     setItem(next);
@@ -114,22 +127,27 @@ export function PracticeMode({ topic }: { topic: Topic }) {
     const i = book.topics.findIndex((x) => x.topic.id === topic.id);
     const nextTopic = book.topics[i + 1]?.topic;
     return (
-      <div className="kg-lesson-grid">
-        <div className="kg-lesson-main kg-center kg-end">
-          <h2 className="kg-h1">{t(S.roundDone)}</h2>
-          <Stars n={end.stars} size={54} />
-          <p>{t(S.roundScore, { n: count, k: end.firstTry })}</p>
-          {end.newSticker && (
-            <motion.div
-              initial={{ scale: 0, rotate: -30 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: 'spring', stiffness: 180, damping: 12 }}
-              className="kg-center"
-            >
-              <Sticker id={topic.sticker} size={140} />
-              <strong>{t(S.newSticker)}</strong>
-            </motion.div>
-          )}
+      <>
+        <Slot name="stage">
+          <div className="kg-canvas kg-canvas--center kg-end">
+            <h2 className="kg-h1">{t(S.roundDone)}</h2>
+            <Stars n={end.stars} size={54} />
+            <p>{t(S.roundScore, { n: count, k: end.firstTry })}</p>
+            {end.newSticker && (
+              <motion.div
+                initial={{ scale: 0, rotate: -30 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ type: 'spring', stiffness: 180, damping: 12 }}
+                className="kg-center"
+              >
+                <Sticker id={topic.sticker} size={140} />
+                <strong>{t(S.newSticker)}</strong>
+              </motion.div>
+            )}
+          </div>
+        </Slot>
+        <Slot name="panel">
+          <PanelHead topic={topic} />
           {after.mastered && (
             <p className="kg-feedback" data-tone="good">
               {t(S.mastered)}
@@ -153,14 +171,14 @@ export function PracticeMode({ topic }: { topic: Topic }) {
                 ▶ {t(S.nextTopic)}
               </Button>
             ) : (
-              <Button variant="primary" size="lg" onClick={() => nav(-1)}>
-                {t(S.backToChapter)}
+              <Button variant="primary" size="lg" onClick={() => nav('/')}>
+                🗺️ {t(S.home)}
               </Button>
             )}
           </div>
-        </div>
+        </Slot>
         <Confetti burst={1} />
-      </div>
+      </>
     );
   }
 
@@ -176,24 +194,19 @@ export function PracticeMode({ topic }: { topic: Topic }) {
       : '';
 
   return (
-    <div className="kg-lesson-grid">
-      <div className="kg-lesson-main">
+    <>
+      <Slot name="stage">
         {item.picture && picture ? (
-          <ToyPanel
-            toyId={item.picture.toy}
-            config={item.picture.config}
-            equation={false}
-            toolbar={false}
-            key={item.id}
-          />
+          <Picture toyId={item.picture.toy} config={item.picture.config} key={item.id} />
         ) : (
-          <div className="kg-stage kg-stage--empty">
+          <div className="kg-canvas kg-canvas--center">
             <DialogueLine speaker={item.speaker} text={item.prompt} key={item.id} size={120} />
           </div>
         )}
-      </div>
-      <aside className="kg-lesson-panel">
-        <div className="kg-panel-top">
+      </Slot>
+      <Slot name="panel">
+        <PanelHead topic={topic} />
+        <div>
           <div className="kg-step-head">
             <span className="kg-badge">
               {t(S.itemOf, { i: Math.min(index + (solved ? 0 : 1), count), n: count })}
@@ -204,7 +217,7 @@ export function PracticeMode({ topic }: { topic: Topic }) {
             <DialogueLine speaker={item.speaker} text={item.prompt} key={item.id} size={72} />
           )}
         </div>
-        <div className="kg-panel-rest">
+        <div className="kg-step">
           {item.ask && (
             <SentenceInput
               ask={item.ask}
@@ -273,16 +286,7 @@ export function PracticeMode({ topic }: { topic: Topic }) {
           )}
 
           <div className="kg-panel-actions">
-            {!solved && hint < 3 && (
-              <Button
-                onClick={() => {
-                  setHint((h) => h + 1);
-                  if (hint + 1 >= 2 && item.picture) setPicture(true);
-                }}
-              >
-                💡 {t(S.hint)}
-              </Button>
-            )}
+            {!solved && hint < 3 && <Button onClick={moreHint}>💡 {t(S.hint)}</Button>}
             {!solved && item.picture && (
               <Button onClick={() => setPicture((p) => !p)}>
                 {picture ? `🙈 ${t(S.hideMe)}` : `👀 ${t(S.showMe)}`}
@@ -295,8 +299,8 @@ export function PracticeMode({ topic }: { topic: Topic }) {
             )}
           </div>
         </div>
-      </aside>
+      </Slot>
       <Confetti burst={check?.correct ? index : 0} />
-    </div>
+    </>
   );
 }

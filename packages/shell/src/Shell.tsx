@@ -7,10 +7,10 @@ import { HashRouter, Navigate, Route, Routes, useParams } from 'react-router';
 import { BookProvider, useBook, type Book } from './book';
 import { ChapterScreen } from './screens/ChapterScreen';
 import { GameScreen } from './screens/GameScreen';
-import { LessonScreen } from './screens/LessonScreen';
 import { MapScreen } from './screens/MapScreen';
 import { ReviewScreen } from './screens/ReviewScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
+import { Workbench } from './workbench/Workbench';
 import './shell.css';
 
 /** `#/page/73` → the topic on that book page (or its chapter). */
@@ -50,7 +50,7 @@ export function Shell({ book }: { book: Book }) {
           <Routes>
             <Route path="/" element={<MapScreen />} />
             <Route path="/ch/:chapterId" element={<ChapterScreen />} />
-            <Route path="/t/:topicId/:mode?" element={<LessonScreen />} />
+            <Route path="/t/:topicId/:mode?" element={<Workbench />} />
             <Route path="/game/:gameId" element={<GameScreen />} />
             <Route path="/page/:n" element={<PageRoute />} />
             <Route path="/settings" element={<SettingsScreen />} />

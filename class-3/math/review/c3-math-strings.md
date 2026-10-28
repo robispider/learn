@@ -1,7 +1,7 @@
 # Bangla review — তৃতীয় শ্রেণির গণিত খেলাঘর
 
 Edit the **bn** column to correct the text, or write a note in **comment**. Put ✔ in **ok** to approve a row.
-Generated file; re-export after content changes. Rows: 325.
+Generated file; re-export after content changes. Rows: 441.
 
 | ok | key | bn | en | comment |
 |---|---|---|---|---|
@@ -29,6 +29,7 @@ Generated file; re-export after content changes. Rows: 325.
 |  | `c3-math.modeSymbols.explore.name` | মূল প্রশ্ন | Main question |  |
 |  | `c3-math.modeSymbols.try.name` | কাজ | Activity |  |
 |  | `c3-math.modeSymbols.practice.name` | অনুশীলন | Practice |  |
+|  | `c3-math.modeSymbols.lab.name` | বদলে দেখি | Experiment |  |
 |  | `c3-math.modeSymbols.challenge.name` | নিজে করি | On my own |  |
 |  | `c3-math.modeSymbols.learn.name` | শিখি | Learn |  |
 |  | `c3-math.stickers.mango.name` | আম | Mango |  |
@@ -79,6 +80,32 @@ Generated file; re-export after content changes. Rows: 325.
 |  | `c3-math.chapters.ch06.topics.6.1.try.2.steps.0.choose.replies.1` | প্লেটের দিকে তাকাও। কমলালেবুই তো নেই! | Look at the plates. There are no oranges! |  |
 |  | `c3-math.chapters.ch06.topics.6.1.try.2.steps.0.choose.replies.2` | ৩ হলো শিশুর সংখ্যা। কমলালেবু কয়টি আছে? | 3 is the number of children. How many oranges are there? |  |
 |  | `c3-math.chapters.ch06.topics.6.1.try.2.steps.0.success` | ঠিক! ০ ÷ ৩ = ০। কিছু না থাকলে কেউ কিছু পায় না। | Right! 0 ÷ 3 = 0. If there is nothing, nobody gets anything. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.two-friends.title` | দুই বন্ধুর ভাগ | Two friends |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.two-friends.text` | ৮টি কমলালেবু ২ জন বন্ধুকে সমানভাবে ভাগ করে দাও। | Share 8 oranges equally between 2 friends. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.two-friends.hints.0` | ▶ চাপো, বা প্লেটে ট্যাপ করো। | Press ▶, or tap a plate. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.two-friends.success` | প্রত্যেকে ৪টি করে পেল! | Each got 4! |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.one-more-friend.title` | আরেকজন এলো! | One more friend! |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.one-more-friend.text` | আরেকজন বন্ধু এলো! ‘কয়জন শিশু’ বাড়িয়ে ৩ জন করো, তারপর ভাগ করো। | Another friend came! Make ‘How many children’ 3, then share. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.one-more-friend.hints.0` | শিশুদের পাশের বিন্দুতে চাপো, বা নিচের ‘উপাদান’ দেখো। | Tap the dot next to the children, or look at ‘Parts’ below. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.one-more-friend.hints.1` | ‘কয়জন শিশু’-এর পাশে + চাপো। | Press + next to ‘How many children’. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.one-more-friend.success` | ১২ ÷ ৩ = ৪। জন বাড়লে প্রত্যেকের ভাগ কমে। | 12 ÷ 3 = 4. More children, smaller shares. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-biscuits.title` | বেশি বিস্কুট | More biscuits |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-biscuits.text` | বিস্কুট বাড়িয়ে ১৮টি করো। ৩ জনের প্রত্যেকে কয়টি পাবে? ভাগ করে দেখো। | Make it 18 biscuits. How many does each of the 3 get? Share and see. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-biscuits.hints.0` | স্তূপের বিন্দুতে চাপো, তারপর + চাপো। | Tap the dot on the pile, then press +. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-biscuits.success` | প্রত্যেকে ৬টি! বিস্কুট বাড়লে ভাগও বাড়ে। | Each gets 6! More biscuits, bigger shares. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-or-less.title` | কম না বেশি? | Fewer or more? |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-or-less.text` | ১২টি বিস্কুট। শিশু ৩ জন থেকে বাড়িয়ে ৬ জন করলে প্রত্যেকের ভাগ কী হবে? চাইলে বদলে দেখো। | 12 biscuits. If the children go from 3 to 6, what happens to each share? Change it and see if you like. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-or-less.choose.options.0` | বাড়বে | It grows |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-or-less.choose.options.1` | কমবে | It gets smaller |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-or-less.choose.options.2` | একই থাকবে | It stays the same |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-or-less.choose.replies.0` | শিশু বেশি হলে একই বিস্কুট বেশি জনে ভাগ হয়। আবার দেখো। | More children share the same biscuits. Look again. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-or-less.choose.replies.2` | ৬ জনকে ভাগ করে দেখো তো! | Try sharing among 6! |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.more-or-less.success` | ঠিক! ১২ ÷ ৬ = ২, আগে ছিল ৪। | Right! 12 ÷ 6 = 2; before it was 4. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.backwards.title` | উল্টো ধাঁধা | Backwards puzzle |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.backwards.text` | কয়টি বিস্কুট নিলে ৪ জনের প্রত্যেকে ঠিক ৫টি করে পাবে? বিস্কুটের সংখ্যা বদলে ভাগ করো। | How many biscuits give each of 4 children exactly 5? Change the number of biscuits and share. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.backwards.hints.0` | ৪ জন, প্রত্যেকে ৫টি: মোট কয়টি লাগবে? | 4 children, 5 each: how many in all? |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.backwards.hints.1` | ৪ × ৫ = ২০। বিস্কুট ২০টি করো, তারপর ▶ চাপো। | 4 × 5 = 20. Make it 20 biscuits, then press ▶. |  |
+|  | `c3-math.chapters.ch06.topics.6.1.lab.challenges.backwards.success` | ২০ ÷ ৪ = ৫ — দারুণ ধাঁধা মিলিয়েছ! | 20 ÷ 4 = 5 — puzzle solved! |  |
 |  | `c3-math.chapters.ch06.topics.6.2.title` | কতজনকে দেওয়া যাবে? | How many children get some? |  |
 |  | `c3-math.chapters.ch06.topics.6.2.question` | ১২টি বিস্কুট আছে। প্রত্যেককে ৩টি করে দিলে কতজনকে দেওয়া যাবে? | There are 12 biscuits. If each child gets 3, how many children get some? |  |
 |  | `c3-math.chapters.ch06.topics.6.2.learn.rule` | প্রত্যেককে সমান সংখ্যক করে দিলে কতজনকে দেওয়া যায়, সেটাও ভাগ দিয়ে বের করা যায়। | Division also tells us how many people can get the same amount each. |  |
@@ -105,6 +132,25 @@ Generated file; re-export after content changes. Rows: 325.
 |  | `c3-math.chapters.ch06.topics.6.2.try.2.steps.0.text` | ১৮টি চকলেট আছে। প্রত্যেককে ৬টি করে দিলে কতজন পাবে? | There are 18 chocolates. If each child gets 6, how many children get some? |  |
 |  | `c3-math.chapters.ch06.topics.6.2.try.2.steps.1.text` | গাণিতিক বাক্যটি লেখো। | Write the number sentence. |  |
 |  | `c3-math.chapters.ch06.topics.6.2.try.2.steps.1.ask.template` | ১৮ ÷ ৬ = [q] | 18 ÷ 6 = [q] |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.pairs.title` | জোড়ায় জোড়ায় | In pairs |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.pairs.text` | ১০টি চকলেট, প্রতি প্যাকেটে ২টি। প্যাকেট বানাও। কতজন পাবে? | 10 chocolates, 2 in each pack. Make the packs. How many children get one? |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.pairs.hints.0` | ▶ চাপো, বা প্যাকেট বানানোর বোতাম চাপো। | Press ▶, or the make-a-pack button. |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.pairs.success` | ৫টি প্যাকেট, ৫ জন পেল! | 5 packs, 5 children! |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.bigger-packs.title` | বড় প্যাকেট | Bigger packs |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.bigger-packs.text` | প্রতি প্যাকেটে ৪টি করে রাখো। এবার কতজন পাবে? | Put 4 in each pack. Now how many children get one? |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.bigger-packs.hints.0` | প্যাকেটের বিন্দুতে চাপো, ‘প্যাকেটে কয়টি’ ৪ করো। | Tap the dot on the pack and make ‘How many in a pack’ 4. |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.bigger-packs.success` | ১২ ÷ ৪ = ৩। প্যাকেট বড় হলে কম জন পায়। | 12 ÷ 4 = 3. Bigger packs, fewer children. |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.which-more.title` | কোনটিতে বেশি জন? | Which feeds more? |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.which-more.text` | ২৪টি বিস্কুট। প্যাকেটে ৬টি করে দিলে বেশি জন পাবে, না ৪টি করে দিলে? বদলে দেখো। | 24 biscuits. Do more children get a pack with 6 in each, or with 4? Change it and see. |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.which-more.choose.options.0` | ৬টি করে | 6 in each |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.which-more.choose.options.1` | ৪টি করে | 4 in each |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.which-more.choose.options.2` | সমান সমান | The same |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.which-more.success` | ৪টি করে দিলে ৬ জন, ৬টি করে দিলে ৪ জন। | 4 each feeds 6 children; 6 each feeds 4. |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.exactly-five.title` | ঠিক ৫ জন | Exactly 5 |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.exactly-five.text` | বিস্কুট আর প্যাকেটের মাপ বদলে এমন করো, যেন ঠিক ৫ জন পায় আর কিছু না বাঁচে। | Change the biscuits and the pack size so exactly 5 children get a pack and nothing is left. |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.exactly-five.hints.0` | ৫টি প্যাকেট × প্যাকেটে কয়টি = মোট বিস্কুট। | 5 packs × how many in a pack = all the biscuits. |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.exactly-five.hints.1` | যেমন: প্যাকেটে ৩টি হলে মোট ১৫টি বিস্কুট লাগবে। | For example: 3 in a pack needs 15 biscuits. |  |
+|  | `c3-math.chapters.ch06.topics.6.2.lab.challenges.exactly-five.success` | দারুণ! ভাগফল ৫, কিছু বাকি নেই। | Great! 5 packs and nothing left. |  |
 |  | `c3-math.chapters.ch06.topics.6.5.title` | ভাগশেষ | Remainder |  |
 |  | `c3-math.chapters.ch06.topics.6.5.question` | রেজার কাছে ১৪টি কমলালেবু আছে। সে তার ৪ বন্ধুকে সমানভাবে দিতে চায়। প্রত্যেকে কয়টি করে পাবে? | Reza has 14 oranges. He wants to share them equally among his 4 friends. How many does each get? |  |
 |  | `c3-math.chapters.ch06.topics.6.5.learn.rule` | সমানভাবে ভাগ করার পর যা অবশিষ্ট থাকে, তাকে ভাগশেষ বলে। ভাগশেষ সবসময় ভাজকের চেয়ে ছোট হয়। | What is left over after sharing equally is called the remainder. The remainder is always less than the divisor. |  |
@@ -142,6 +188,30 @@ Generated file; re-export after content changes. Rows: 325.
 |  | `c3-math.chapters.ch06.topics.6.5.try.2.steps.0.choose.options.1` | ১৭ ÷ ৫ = ২, অবশিষ্ট ৭ | 17 ÷ 5 = 2, remainder 7 |  |
 |  | `c3-math.chapters.ch06.topics.6.5.try.2.steps.0.choose.replies.1` | ৭টি থেকে ৫ জনকে আরও একটি করে দেওয়া যায়! ভাগশেষ ৫-এর চেয়ে ছোট হবে। | From 7 you can give 5 children one more each! The remainder must be less than 5. |  |
 |  | `c3-math.chapters.ch06.topics.6.5.try.2.steps.0.success` | ঠিক! ভাগশেষ ২, যা ভাজক ৫-এর চেয়ে ছোট। | Right! The remainder is 2, which is less than the divisor 5. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.one-left.title` | কয়টি বাকি? | How many left? |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.one-left.text` | ১০টি লেবু ৩ জনকে সমানভাবে ভাগ করো। কয়টি অবশিষ্ট থাকে? | Share 10 lemons equally among 3. How many are left over? |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.one-left.hints.0` | ▶ চাপো, আর থামলে স্তূপটা দেখো। | Press ▶ and look at the pile when it stops. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.one-left.success` | ১০ ÷ ৩ = ৩, ভাগশেষ ১। | 10 ÷ 3 = 3, remainder 1. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.make-two.title` | ভাগশেষ ২ বানাও | Make remainder 2 |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.make-two.text` | লেবুর সংখ্যা বদলে এমন করো, যেন ৩ জনকে ভাগ করার পর ২টি অবশিষ্ট থাকে। | Change the number of lemons so that 2 are left after sharing among 3. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.make-two.hints.0` | ১২টি হলে কিছু বাকি থাকে না। ১টি বা ২টি বাড়িয়ে দেখো। | With 12 nothing is left. Try adding 1 or 2. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.make-two.hints.1` | ১৪টি লেবু নিয়ে ▶ চাপো। | Make it 14 lemons and press ▶. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.make-two.success` | ১৪ ÷ ৩ = ৪, ভাগশেষ ২! | 14 ÷ 3 = 4, remainder 2! |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.biggest-left.title` | সবচেয়ে বড় ভাগশেষ | Biggest remainder |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.biggest-left.text` | ৪ জনকে ভাগ করে যত বেশি পারো অবশিষ্ট রাখো। কমলালেবুর সংখ্যা বদলে চেষ্টা করো। | Share among 4 and leave as many over as you can. Change the number of oranges and try. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.biggest-left.hints.0` | ১৩, ১৪, ১৫, ১৬ — একে একে চেষ্টা করো। | Try 13, 14, 15, 16 one by one. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.biggest-left.hints.1` | ১৬ হলে কী হয়? ৪টি বাকি থাকলে সবাইকে আরেকটি দেওয়া যায়! | What happens at 16? With 4 left, everyone gets one more! |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.biggest-left.success` | ৩! ভাগশেষ কখনো ভাজক ৪-এর সমান বা বড় হয় না। | 3! The remainder never reaches the divisor, 4. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.cannot-be.title` | কোনটি হতেই পারে না? | Which is impossible? |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.cannot-be.text` | ৫ জনকে ভাগ করলে কোনটি ভাগশেষ হতে পারে না? | Sharing among 5, which can never be the remainder? |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.cannot-be.choose.options.0` | ৪ | 4 |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.cannot-be.choose.options.1` | ০ | 0 |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.cannot-be.choose.options.2` | ৫ | 5 |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.cannot-be.choose.options.3` | ২ | 2 |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.cannot-be.choose.replies.0` | ১৪ ÷ ৫ করে দেখো: ভাগশেষ ৪ হয়! | Try 14 ÷ 5: the remainder is 4! |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.cannot-be.choose.replies.1` | ১৫ ÷ ৫ হলে কিছুই বাকি থাকে না। | 15 ÷ 5 leaves nothing. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.cannot-be.choose.replies.3` | ১২ ÷ ৫ করে দেখো। | Try 12 ÷ 5. |  |
+|  | `c3-math.chapters.ch06.topics.6.5.lab.challenges.cannot-be.success` | ঠিক! ৫টি বাকি থাকলে সবাইকে আরেকটি করে দেওয়া যায়। | Right! With 5 left, everyone can get one more. |  |
 |  | `c3-math.chapters.ch06.upcoming.6.3.title` | নামতা দিয়ে ভাগ; ভাজ্য, ভাজক, ভাগফল | Dividing with tables; dividend, divisor, quotient |  |
 |  | `c3-math.chapters.ch06.upcoming.6.4.title` | দশকের সংখ্যাকে ভাগ (৮৪ ÷ ৪) | Dividing tens (84 ÷ 4) |  |
 |  | `c3-math.chapters.ch06.upcoming.6.6.title` | ভাজ্য = ভাজক × ভাগফল + ভাগশেষ | Dividend = divisor × quotient + remainder |  |
@@ -226,6 +296,31 @@ Generated file; re-export after content changes. Rows: 325.
 |  | `shell.words` | নতুন শব্দ | New words |  |
 |  | `shell.openBook` | বইয়ে দেখো: পৃষ্ঠা {a}–{b} | See the book: pages {a}–{b} |  |
 |  | `shell.gameOver` | খেলা শেষ | Game over |  |
+|  | `shell.tagline` | দেখি · খেলি · বুঝি · শিখি | See · play · understand · learn |  |
+|  | `shell.menu` | মেনু | Menu |  |
+|  | `shell.chapters` | অধ্যায়সমূহ | Chapters |  |
+|  | `shell.close` | বন্ধ করো | Close |  |
+|  | `shell.tools` | খেলনার যন্ত্র | Toy tools |  |
+|  | `shell.showLabels` | নাম দেখাও/লুকাও | Show or hide labels |  |
+|  | `shell.mathCode` | গণিতের ভাষায় | In maths language |  |
+|  | `shell.playIt` | চালাও | Play |  |
+|  | `shell.pause` | থামাও | Pause |  |
+|  | `shell.whatToDo` | কী কী করতে পারো | What you can do |  |
+|  | `shell.tipDots` | ছবির বিন্দু বা নামে চাপ দিলে অংশটির কাজ জানবে। | Tap a dot or a label to learn what that part does. |  |
+|  | `shell.tipHint` | আটকে গেলে 💡 সংকেত নাও। | Stuck? Take a 💡 hint. |  |
+|  | `shell.knobsInLab` | এটি বদলাতে চাও? ‘বদলে দেখি’-তে যাও। | Want to change this? Go to ‘Experiment’. |  |
+|  | `shell.goLab` | বদলে দেখি | Experiment |  |
+|  | `shell.labIntro` | এখানে সব কিছু বদলানো যায়! সংখ্যা বদলাও, ▶ চাপো, দেখো কী হয়। তারপর চ্যালেঞ্জগুলো চেষ্টা করো। | Here you can change everything! Change the numbers, press ▶ and see what happens. Then try the challenges. |  |
+|  | `shell.changeParts` | উপাদান বদলাও | Change the parts |  |
+|  | `shell.challenges` | চ্যালেঞ্জ | Challenges |  |
+|  | `shell.solvedOf` | {n}টির মধ্যে {k}টি | {k} of {n} |  |
+|  | `shell.level` | স্তর {n} | Level {n} |  |
+|  | `shell.allChallenges` | সব চ্যালেঞ্জ | All challenges |  |
+|  | `shell.nextChallenge` | পরের চ্যালেঞ্জ | Next challenge |  |
+|  | `shell.watchExample` | উদাহরণটি দেখো | Watch the example |  |
+|  | `shell.nextUp` | এবার: {x} | Next: {x} |  |
+|  | `shell.more` | বাড়াও | more |  |
+|  | `shell.less` | কমাও | less |  |
 |  | `shell.gateTitle` | বড়দের জন্য | For grown-ups |  |
 |  | `shell.gateQ` | {a} × {b} = ? | {a} × {b} = ? |  |
 |  | `shell.gateWrong` | হয়নি, আবার চেষ্টা করুন। | Not quite, try again. |  |
@@ -283,6 +378,27 @@ Generated file; re-export after content changes. Rows: 325.
 |  | `kit.operations.platesAndPacks.editSize` | প্রত্যেককে | Each gets |  |
 |  | `kit.operations.platesAndPacks.more` | বাড়াও | more |  |
 |  | `kit.operations.platesAndPacks.less` | কমাও | fewer |  |
+|  | `kit.operations.platesAndPacks.partPile` | স্তূপ | The pile |  |
+|  | `kit.operations.platesAndPacks.partPileNote` | ভাগ করার আগে সব {item} এখানে থাকে। শেষে যা পড়ে থাকে, সেটাই অবশিষ্ট। | All the {item} start here. Whatever is left at the end is the remainder. |  |
+|  | `kit.operations.platesAndPacks.partKids` | শিশুরা | The children |  |
+|  | `kit.operations.platesAndPacks.partKidsNote` | যতজন শিশু, ততগুলো সমান ভাগ। এটাই ভাজক। | As many children, as many equal shares. This is the divisor. |  |
+|  | `kit.operations.platesAndPacks.partPlate` | প্লেট | A plate |  |
+|  | `kit.operations.platesAndPacks.partPlateNote` | নিচের সংখ্যাটি বলে প্লেটে কয়টি আছে। সব প্লেটে সমান হলে ভাগ ঠিক। | The number below says how many are on it. Fair means every plate has the same. |  |
+|  | `kit.operations.platesAndPacks.partPack` | প্যাকেট | A pack |  |
+|  | `kit.operations.platesAndPacks.partPackNote` | প্রতিটি প্যাকেটে সমান সংখ্যক থাকে। একটি প্যাকেট পায় একজন শিশু। | Every pack holds the same number. One child gets one pack. |  |
+|  | `kit.operations.platesAndPacks.knobTotal` | কয়টি {item} | How many {item} |  |
+|  | `kit.operations.platesAndPacks.knobItem` | কী ভাগ করবে | What to share |  |
+|  | `kit.operations.platesAndPacks.knobPlates` | কয়জন শিশু | How many children |  |
+|  | `kit.operations.platesAndPacks.knobSize` | প্যাকেটে কয়টি | How many in a pack |  |
+|  | `kit.operations.platesAndPacks.noteStart` | এখনও ভাগ শুরু হয়নি | Not shared yet |  |
+|  | `kit.operations.platesAndPacks.noteShareProgress` | {n} বার দেওয়া হলো, স্তূপে {p}টি | {n} rounds given, {p} in the pile |  |
+|  | `kit.operations.platesAndPacks.noteGroupProgress` | {k}টি প্যাকেট হলো, স্তূপে {p}টি | {k} packs made, {p} in the pile |  |
+|  | `kit.operations.platesAndPacks.noteUnfair` | সবাই সমান পায়নি | Not equal yet |  |
+|  | `kit.operations.platesAndPacks.noteCheck` | গুণ করে মিলিয়ে দেখি | Check by multiplying |  |
+|  | `kit.operations.platesAndPacks.noteRule` | অবশিষ্ট সবসময় ভাজকের চেয়ে ছোট | The remainder is always less than the divisor |  |
+|  | `kit.operations.platesAndPacks.tipTap` | প্লেটে ট্যাপ করো: স্তূপ থেকে একটি যাবে। | Tap a plate: one goes from the pile. |  |
+|  | `kit.operations.platesAndPacks.tipDrag` | কোনো জিনিস টেনে অন্য প্লেটে বা স্তূপে রাখো। | Drag a thing to another plate or back to the pile. |  |
+|  | `kit.operations.platesAndPacks.tipPlay` | ▶ চাপলে নিজে নিজে ভাগ হয়ে যাবে। | Press ▶ to watch it share by itself. |  |
 |  | `kit.operations.platesAndPacks.leftWord` | অবশিষ্ট | remainder |  |
 |  | `kit.operations.platesAndPacks.shareLabels.dividend` | বস্তু | things |  |
 |  | `kit.operations.platesAndPacks.shareLabels.divisor` | শিশু | children |  |

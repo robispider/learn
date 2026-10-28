@@ -32,8 +32,11 @@ Goal: prove the look, the lesson loop and the 2-D/2.5-D stage on one chapter bef
 - [x] 6.1, 6.2, 6.5: Explore, Try, Practice and Learn, in [`content/src/chapters/ch06.json`](../content/src/chapters/ch06.json)
 - [x] T5 Plates & Packs, 2-D + 2.5-D; Plate Dealer Rush game (60 s)
 - [x] Rafi, Tuli, Tia + 8 kids; biscuit, orange, lemon, chocolate, plate, bag, table, ribbon; 4 stickers
+- [x] Lesson workbench (Arduino-style): chapter drawer, lesson strip, stage callouts + inspector, dock, math-language box with ▶ play
+- [x] 🎛️ Lab for 6.1, 6.2, 6.5: knobs (how many, what, children / pack size) and 13 challenges ★–★★★
 - [x] Glossary v0 (8 words) and the review file [`review/c3-math-strings.md`](../review/c3-math-strings.md)
 - [ ] 6.5 ribbon step (30 cm into 4 cm pieces): needs a small ruler toy; replaced for now by "১৭ ÷ ৫: which is right?"
+- [ ] Owner review: the workbench layout and the new lab challenges (Bangla in the review file)
 - [ ] Owner review: art direction, Bangla, terms (see [decisions](../../../plan/decisions.md) D13)
 - [ ] Low-end Android phone test of the 2.5-D view
 

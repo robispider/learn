@@ -1,6 +1,6 @@
 import { Bag, Character, Item, KID_IDS, Plate, TableTop } from '@khelaghor/art';
 import { formatNumber } from '@khelaghor/i18n';
-import { DragSvg, Draggable, DropZone, useDropHover, type ToyViewProps } from '@khelaghor/stage';
+import { DragSvg, Draggable, DropZone, SvgAnchor, useDropHover, type ToyViewProps } from '@khelaghor/stage';
 import { motion, useReducedMotion } from 'motion/react';
 import { perRow, plateOrder, plateSlot, pileSlot, slotCount, slotGrid } from './layout';
 import { summarize, type Action, type State } from './model';
@@ -191,6 +191,12 @@ export function PlatesView2D({ state: s, dispatch, lang, readOnly }: ToyViewProp
           </DropZone>
         );
       })}
+
+      {/* where the callouts point */}
+      <SvgAnchor id="pile" x={PILE.x - 112} y={PILE.y + 16} />
+      {share && geo[0] && <SvgAnchor id="plate" x={geo[0].x - geo[0].w / 2 + 4} y={geo[0].y + 4} />}
+      {share && kids && geo[0] && <SvgAnchor id="kids" x={geo[0].x + 4} y={TABLE_Y + 6 - 120 * kidScale} />}
+      {!share && geo[0] && <SvgAnchor id="pack" x={geo[0].x - geo[0].w * 0.31} y={geo[0].y + 10} />}
 
       {/* the items themselves: each keeps its identity, so it flies from the pile to its plate */}
       {s.where.map((_, i) => {

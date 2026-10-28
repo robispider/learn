@@ -178,6 +178,119 @@
           ]
         }
       ],
+      "lab": {
+        "toy": "operations/plates-and-packs",
+        "config": { "mode": "share", "total": 12, "plates": 3, "item": "biscuit" },
+        "challenges": [
+          {
+            "id": "two-friends",
+            "level": 1,
+            "title": { "bn": "দুই বন্ধুর ভাগ", "en": "Two friends" },
+            "say": "tuli",
+            "setup": { "mode": "share", "total": 8, "plates": 2, "item": "orange" },
+            "text": {
+              "bn": "৮টি কমলালেবু ২ জন বন্ধুকে সমানভাবে ভাগ করে দাও।",
+              "en": "Share 8 oranges equally between 2 friends."
+            },
+            "expect": { "done": true },
+            "hints": [{ "bn": "▶ চাপো, বা প্লেটে ট্যাপ করো।", "en": "Press ▶, or tap a plate." }],
+            "success": { "bn": "প্রত্যেকে ৪টি করে পেল!", "en": "Each got 4!" }
+          },
+          {
+            "id": "one-more-friend",
+            "level": 2,
+            "title": { "bn": "আরেকজন এলো!", "en": "One more friend!" },
+            "say": "rafi",
+            "pose": "surprised",
+            "setup": { "mode": "share", "total": 12, "plates": 2, "item": "biscuit" },
+            "text": {
+              "bn": "আরেকজন বন্ধু এলো! ‘কয়জন শিশু’ বাড়িয়ে ৩ জন করো, তারপর ভাগ করো।",
+              "en": "Another friend came! Make ‘How many children’ 3, then share."
+            },
+            "expect": { "plates": 3, "done": true },
+            "hints": [
+              {
+                "bn": "শিশুদের পাশের বিন্দুতে চাপো, বা নিচের ‘উপাদান’ দেখো।",
+                "en": "Tap the dot next to the children, or look at ‘Parts’ below."
+              },
+              { "bn": "‘কয়জন শিশু’-এর পাশে + চাপো।", "en": "Press + next to ‘How many children’." }
+            ],
+            "success": {
+              "bn": "১২ ÷ ৩ = ৪। জন বাড়লে প্রত্যেকের ভাগ কমে।",
+              "en": "12 ÷ 3 = 4. More children, smaller shares."
+            }
+          },
+          {
+            "id": "more-biscuits",
+            "level": 2,
+            "title": { "bn": "বেশি বিস্কুট", "en": "More biscuits" },
+            "say": "tuli",
+            "setup": { "mode": "share", "total": 12, "plates": 3, "item": "biscuit" },
+            "text": {
+              "bn": "বিস্কুট বাড়িয়ে ১৮টি করো। ৩ জনের প্রত্যেকে কয়টি পাবে? ভাগ করে দেখো।",
+              "en": "Make it 18 biscuits. How many does each of the 3 get? Share and see."
+            },
+            "expect": { "total": 18, "plates": 3, "done": true },
+            "hints": [
+              { "bn": "স্তূপের বিন্দুতে চাপো, তারপর + চাপো।", "en": "Tap the dot on the pile, then press +." }
+            ],
+            "success": {
+              "bn": "প্রত্যেকে ৬টি! বিস্কুট বাড়লে ভাগও বাড়ে।",
+              "en": "Each gets 6! More biscuits, bigger shares."
+            }
+          },
+          {
+            "id": "more-or-less",
+            "level": 2,
+            "title": { "bn": "কম না বেশি?", "en": "Fewer or more?" },
+            "say": "tia",
+            "pose": "think",
+            "setup": { "mode": "share", "total": 12, "plates": 3, "item": "biscuit" },
+            "text": {
+              "bn": "১২টি বিস্কুট। শিশু ৩ জন থেকে বাড়িয়ে ৬ জন করলে প্রত্যেকের ভাগ কী হবে? চাইলে বদলে দেখো।",
+              "en": "12 biscuits. If the children go from 3 to 6, what happens to each share? Change it and see if you like."
+            },
+            "choose": {
+              "options": [
+                { "bn": "বাড়বে", "en": "It grows" },
+                { "bn": "কমবে", "en": "It gets smaller" },
+                { "bn": "একই থাকবে", "en": "It stays the same" }
+              ],
+              "answer": 1,
+              "replies": [
+                {
+                  "bn": "শিশু বেশি হলে একই বিস্কুট বেশি জনে ভাগ হয়। আবার দেখো।",
+                  "en": "More children share the same biscuits. Look again."
+                },
+                null,
+                { "bn": "৬ জনকে ভাগ করে দেখো তো!", "en": "Try sharing among 6!" }
+              ]
+            },
+            "success": { "bn": "ঠিক! ১২ ÷ ৬ = ২, আগে ছিল ৪।", "en": "Right! 12 ÷ 6 = 2; before it was 4." }
+          },
+          {
+            "id": "backwards",
+            "level": 3,
+            "title": { "bn": "উল্টো ধাঁধা", "en": "Backwards puzzle" },
+            "say": "tia",
+            "pose": "think",
+            "setup": { "mode": "share", "total": 6, "plates": 4, "item": "biscuit" },
+            "text": {
+              "bn": "কয়টি বিস্কুট নিলে ৪ জনের প্রত্যেকে ঠিক ৫টি করে পাবে? বিস্কুটের সংখ্যা বদলে ভাগ করো।",
+              "en": "How many biscuits give each of 4 children exactly 5? Change the number of biscuits and share."
+            },
+            "expect": { "plates": 4, "quotient": 5, "remainder": 0 },
+            "hints": [
+              { "bn": "৪ জন, প্রত্যেকে ৫টি: মোট কয়টি লাগবে?", "en": "4 children, 5 each: how many in all?" },
+              {
+                "bn": "৪ × ৫ = ২০। বিস্কুট ২০টি করো, তারপর ▶ চাপো।",
+                "en": "4 × 5 = 20. Make it 20 biscuits, then press ▶."
+              }
+            ],
+            "success": { "bn": "২০ ÷ ৪ = ৫ — দারুণ ধাঁধা মিলিয়েছ!", "en": "20 ÷ 4 = 5 — puzzle solved!" }
+          }
+        ]
+      },
       "practice": {
         "templates": [{ "id": "div-share-exact" }],
         "count": 8,
@@ -327,6 +440,98 @@
           ]
         }
       ],
+      "lab": {
+        "toy": "operations/plates-and-packs",
+        "config": { "mode": "group", "total": 12, "size": 3, "item": "biscuit" },
+        "challenges": [
+          {
+            "id": "pairs",
+            "level": 1,
+            "title": { "bn": "জোড়ায় জোড়ায়", "en": "In pairs" },
+            "say": "tuli",
+            "setup": { "mode": "group", "total": 10, "size": 2, "item": "chocolate" },
+            "text": {
+              "bn": "১০টি চকলেট, প্রতি প্যাকেটে ২টি। প্যাকেট বানাও। কতজন পাবে?",
+              "en": "10 chocolates, 2 in each pack. Make the packs. How many children get one?"
+            },
+            "expect": { "done": true },
+            "hints": [
+              { "bn": "▶ চাপো, বা প্যাকেট বানানোর বোতাম চাপো।", "en": "Press ▶, or the make-a-pack button." }
+            ],
+            "success": { "bn": "৫টি প্যাকেট, ৫ জন পেল!", "en": "5 packs, 5 children!" }
+          },
+          {
+            "id": "bigger-packs",
+            "level": 2,
+            "title": { "bn": "বড় প্যাকেট", "en": "Bigger packs" },
+            "say": "rafi",
+            "setup": { "mode": "group", "total": 12, "size": 3, "item": "biscuit" },
+            "text": {
+              "bn": "প্রতি প্যাকেটে ৪টি করে রাখো। এবার কতজন পাবে?",
+              "en": "Put 4 in each pack. Now how many children get one?"
+            },
+            "expect": { "size": 4, "done": true },
+            "hints": [
+              {
+                "bn": "প্যাকেটের বিন্দুতে চাপো, ‘প্যাকেটে কয়টি’ ৪ করো।",
+                "en": "Tap the dot on the pack and make ‘How many in a pack’ 4."
+              }
+            ],
+            "success": {
+              "bn": "১২ ÷ ৪ = ৩। প্যাকেট বড় হলে কম জন পায়।",
+              "en": "12 ÷ 4 = 3. Bigger packs, fewer children."
+            }
+          },
+          {
+            "id": "which-more",
+            "level": 2,
+            "title": { "bn": "কোনটিতে বেশি জন?", "en": "Which feeds more?" },
+            "say": "tia",
+            "pose": "think",
+            "setup": { "mode": "group", "total": 24, "size": 6, "item": "biscuit" },
+            "text": {
+              "bn": "২৪টি বিস্কুট। প্যাকেটে ৬টি করে দিলে বেশি জন পাবে, না ৪টি করে দিলে? বদলে দেখো।",
+              "en": "24 biscuits. Do more children get a pack with 6 in each, or with 4? Change it and see."
+            },
+            "choose": {
+              "options": [
+                { "bn": "৬টি করে", "en": "6 in each" },
+                { "bn": "৪টি করে", "en": "4 in each" },
+                { "bn": "সমান সমান", "en": "The same" }
+              ],
+              "answer": 1
+            },
+            "success": {
+              "bn": "৪টি করে দিলে ৬ জন, ৬টি করে দিলে ৪ জন।",
+              "en": "4 each feeds 6 children; 6 each feeds 4."
+            }
+          },
+          {
+            "id": "exactly-five",
+            "level": 3,
+            "title": { "bn": "ঠিক ৫ জন", "en": "Exactly 5" },
+            "say": "tia",
+            "pose": "think",
+            "setup": { "mode": "group", "total": 12, "size": 3, "item": "biscuit" },
+            "text": {
+              "bn": "বিস্কুট আর প্যাকেটের মাপ বদলে এমন করো, যেন ঠিক ৫ জন পায় আর কিছু না বাঁচে।",
+              "en": "Change the biscuits and the pack size so exactly 5 children get a pack and nothing is left."
+            },
+            "expect": { "quotient": 5, "remainder": 0 },
+            "hints": [
+              {
+                "bn": "৫টি প্যাকেট × প্যাকেটে কয়টি = মোট বিস্কুট।",
+                "en": "5 packs × how many in a pack = all the biscuits."
+              },
+              {
+                "bn": "যেমন: প্যাকেটে ৩টি হলে মোট ১৫টি বিস্কুট লাগবে।",
+                "en": "For example: 3 in a pack needs 15 biscuits."
+              }
+            ],
+            "success": { "bn": "দারুণ! ভাগফল ৫, কিছু বাকি নেই।", "en": "Great! 5 packs and nothing left." }
+          }
+        ]
+      },
       "practice": {
         "templates": [
           { "id": "div-group-exact", "weight": 2 },
@@ -533,6 +738,103 @@
           ]
         }
       ],
+      "lab": {
+        "toy": "operations/plates-and-packs",
+        "config": { "mode": "share", "total": 14, "plates": 4, "item": "orange", "labels": "terms" },
+        "challenges": [
+          {
+            "id": "one-left",
+            "level": 1,
+            "title": { "bn": "কয়টি বাকি?", "en": "How many left?" },
+            "say": "tuli",
+            "setup": { "mode": "share", "total": 10, "plates": 3, "item": "lemon", "labels": "terms" },
+            "text": {
+              "bn": "১০টি লেবু ৩ জনকে সমানভাবে ভাগ করো। কয়টি অবশিষ্ট থাকে?",
+              "en": "Share 10 lemons equally among 3. How many are left over?"
+            },
+            "expect": { "done": true, "remainder": 1 },
+            "hints": [
+              { "bn": "▶ চাপো, আর থামলে স্তূপটা দেখো।", "en": "Press ▶ and look at the pile when it stops." }
+            ],
+            "success": { "bn": "১০ ÷ ৩ = ৩, ভাগশেষ ১।", "en": "10 ÷ 3 = 3, remainder 1." }
+          },
+          {
+            "id": "make-two",
+            "level": 2,
+            "title": { "bn": "ভাগশেষ ২ বানাও", "en": "Make remainder 2" },
+            "say": "rafi",
+            "setup": { "mode": "share", "total": 12, "plates": 3, "item": "lemon", "labels": "terms" },
+            "text": {
+              "bn": "লেবুর সংখ্যা বদলে এমন করো, যেন ৩ জনকে ভাগ করার পর ২টি অবশিষ্ট থাকে।",
+              "en": "Change the number of lemons so that 2 are left after sharing among 3."
+            },
+            "expect": { "plates": 3, "remainder": 2 },
+            "hints": [
+              {
+                "bn": "১২টি হলে কিছু বাকি থাকে না। ১টি বা ২টি বাড়িয়ে দেখো।",
+                "en": "With 12 nothing is left. Try adding 1 or 2."
+              },
+              { "bn": "১৪টি লেবু নিয়ে ▶ চাপো।", "en": "Make it 14 lemons and press ▶." }
+            ],
+            "success": { "bn": "১৪ ÷ ৩ = ৪, ভাগশেষ ২!", "en": "14 ÷ 3 = 4, remainder 2!" }
+          },
+          {
+            "id": "biggest-left",
+            "level": 3,
+            "title": { "bn": "সবচেয়ে বড় ভাগশেষ", "en": "Biggest remainder" },
+            "say": "tia",
+            "pose": "think",
+            "setup": { "mode": "share", "total": 12, "plates": 4, "item": "orange", "labels": "terms" },
+            "text": {
+              "bn": "৪ জনকে ভাগ করে যত বেশি পারো অবশিষ্ট রাখো। কমলালেবুর সংখ্যা বদলে চেষ্টা করো।",
+              "en": "Share among 4 and leave as many over as you can. Change the number of oranges and try."
+            },
+            "expect": { "plates": 4, "remainder": 3 },
+            "hints": [
+              { "bn": "১৩, ১৪, ১৫, ১৬ — একে একে চেষ্টা করো।", "en": "Try 13, 14, 15, 16 one by one." },
+              {
+                "bn": "১৬ হলে কী হয়? ৪টি বাকি থাকলে সবাইকে আরেকটি দেওয়া যায়!",
+                "en": "What happens at 16? With 4 left, everyone gets one more!"
+              }
+            ],
+            "success": {
+              "bn": "৩! ভাগশেষ কখনো ভাজক ৪-এর সমান বা বড় হয় না।",
+              "en": "3! The remainder never reaches the divisor, 4."
+            }
+          },
+          {
+            "id": "cannot-be",
+            "level": 3,
+            "title": { "bn": "কোনটি হতেই পারে না?", "en": "Which is impossible?" },
+            "say": "tia",
+            "pose": "think",
+            "setup": { "mode": "share", "total": 13, "plates": 5, "item": "orange", "labels": "terms" },
+            "text": {
+              "bn": "৫ জনকে ভাগ করলে কোনটি ভাগশেষ হতে পারে না?",
+              "en": "Sharing among 5, which can never be the remainder?"
+            },
+            "choose": {
+              "options": [
+                { "bn": "৪", "en": "4" },
+                { "bn": "০", "en": "0" },
+                { "bn": "৫", "en": "5" },
+                { "bn": "২", "en": "2" }
+              ],
+              "answer": 2,
+              "replies": [
+                { "bn": "১৪ ÷ ৫ করে দেখো: ভাগশেষ ৪ হয়!", "en": "Try 14 ÷ 5: the remainder is 4!" },
+                { "bn": "১৫ ÷ ৫ হলে কিছুই বাকি থাকে না।", "en": "15 ÷ 5 leaves nothing." },
+                null,
+                { "bn": "১২ ÷ ৫ করে দেখো।", "en": "Try 12 ÷ 5." }
+              ]
+            },
+            "success": {
+              "bn": "ঠিক! ৫টি বাকি থাকলে সবাইকে আরেকটি করে দেওয়া যায়।",
+              "en": "Right! With 5 left, everyone can get one more."
+            }
+          }
+        ]
+      },
       "practice": {
         "templates": [
           { "id": "div-remainder", "weight": 3 },

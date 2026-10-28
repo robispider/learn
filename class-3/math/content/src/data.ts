@@ -153,6 +153,8 @@ export const bookData = {
     explore: { symbol: '❓', name: { bn: 'মূল প্রশ্ন', en: 'Main question' } },
     try: { symbol: '▲', name: { bn: 'কাজ', en: 'Activity' } },
     practice: { symbol: '■', name: { bn: 'অনুশীলন', en: 'Practice' } },
+    // Not a book symbol: the app's free-play lab.
+    lab: { symbol: '🎛️', name: { bn: 'বদলে দেখি', en: 'Experiment' } },
     challenge: { symbol: '●', name: { bn: 'নিজে করি', en: 'On my own' } },
     learn: { symbol: '📘', name: { bn: 'শিখি', en: 'Learn' } },
   },

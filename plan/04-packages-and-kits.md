@@ -72,13 +72,22 @@ interface ToyDefinition<State, Config> {
     '2.5d'?: React.FC<ToyViewProps<State>>;           // optional, lazy
     '3d'?: React.FC<ToyViewProps<State>>;             // optional, lazy, WebGL only
   };
+  controls?: React.FC<ToyViewProps<State>>;          // buttons + status under the stage
   toEquation?(state: State, lang: Lang): EquationChip[];
-  check?(state: State, expect: unknown): Feedback;    // for Try steps
+  explain?(state: State, lang: Lang): EqLine[];       // "math language" lines + comments
+  check?(state: State, expect: unknown): Feedback;    // for Try steps and lab challenges
+  parts?(state: State, lang: Lang): ToyPart[];        // callouts: title, note, knobs → actions
+  autoplay?(state: State): ToyAction | null;          // ▶ play: next step, null when done
+  clear?: ToyAction;                                  // restart but keep knob changes
+  tips?: I18n[];                                      // "what you can do" list
+  thumbnail?: React.FC<{ config: Config }>;           // lesson-card picture
   generators?: PracticeTemplate[];                    // shared practice templates
   misconceptions?: Misconception[];
 }
 ```
-A lesson only references `toy`, `config`, `steps` and `practice` (see [05-tech-stack.md](05-tech-stack.md#content-model)).
+Renderers mark where each part is with `SvgAnchor` (2-D) or `Anchor3D` (2.5-D/3-D) from `@khelaghor/stage`; the shell draws the callouts there, so callouts work the same in every view.
+
+A lesson only references `toy`, `config`, `steps`, `lab` and `practice` (see [05-tech-stack.md](05-tech-stack.md#content-model)).
 
 ## Rules for what goes where
 | Question | Put it in |

@@ -23,27 +23,32 @@ All screens below are provided by the shared **`@khelaghor/shell`** package. A b
 ### 2. Chapter page
 - Title and book pages, topic cards in book order with ⭐ state and the book's mode symbols, the Challenge at the end, and the sticker page.
 
-### 3. Lesson playground (core screen)
+### 3. Lesson workbench (core screen)
+Modelled on the inspiration sites' workbench: one screen per lesson, nothing scrolls on a laptop. Built in `packages/shell/src/workbench/`.
 ```
-┌────────────────────────────────────────────────────────────┐
-│ ← ৬ ভাগ › ৬.৫ ভাগশেষ             ⭐ 2/3   🔊   বাংলা|EN      │
-├────────────────────────────────────────────────────────────┤
-│ [Rafi bubble 🔊] রেজার কাছে ১৪টি কমলালেবু…                    │
-│        ┌──────────── STAGE ─────────────┐                    │
-│        │ 2-D SVG · 2.5-D iso · 3-D scene │   [companion]     │
-│        │ hotspots · drag · animate       │                    │
-│        └─────────────────────────────────┘                    │
-│   ⟲ ⟳  − +  ⤾  2D|3D  ⓘ │ দেখাও │ ▶ পরের ধাপ                 │
-├────────────────────────────────────────────────────────────┤
-│  ❓ Explore   ▲ Try   ■ Practice   📘 Learn                  │
-│  [১৪] ÷ [৪] = [৩], ভাগশেষ [২]     ← live equation chips      │
-└────────────────────────────────────────────────────────────┘
+┌──┬──────────────────────────────────────────────────────────────────────────┐
+│🗺│ 🏡 তৃতীয় শ্রেণির গণিত খেলাঘর          [🍪 অধ্যায় ৬ · ভাগ ▓▓░ ★২/৯]  ★ ৫   │
+│📚├────────────────────────────────────────────┬─────────────────────────────┤
+│🎮│  ┌──────── STAGE (grid paper) ───────────┐ │ ❓মূল প্রশ্ন ▲কাজ 🎛️বদলে দেখি │
+│⚙ │  │   🏷 শিশুরা ┆                        │ │ 📘শিখি ■অনুশীলন            │
+│  │  │ 🏷 স্তূপ ┆  ● ● ●   (callout dots)     │ ├─────────────────────────────┤
+│  │  │      ●  🍪🍪🍪   🍽 🍽 🍽               │ │ the mode's panel: story,    │
+│  │  │   ┌─────────────┐  inspector card      │ │ steps, hints, knobs,        │
+│  │  │   │ স্তূপ  🔊 × │  (note + knobs)       │ │ challenge ladder, rule…     │
+│  │  │   └─────────────┘                      │ ├─────────────────────────────┤
+│  │  │   ⟲ ⟳ ↺ │ ২-ডি|২.৫-ডি │ 🏷 💡  (dock)  │ │ ✏️ গণিতের ভাষায়   ↺  ▶ চালাও │
+│🔊│  └────────────────────────────────────────┘ │ ১ [১৪]÷[৪]=[৩], ভাগশেষ [২]  │
+│EN│  [status]        [🤲 একবার করে দাও] [↺]   │ ২ ৪×৩+২=১৪  // মিলিয়ে দেখি │
+│  ├────────────────────────────────────────────┴─────────────────────────────┤
+│  │ পাঠ  📚 অধ্যায় ৬ · ভাগ ▾   ‹ [🍽 ৬.১ …] [🛍 ৬.২ …] [🔒 ৬.৩ …] [🍊 ৬.৫ …] › │
+└──┴──────────────────────────────────────────────────────────────────────────┘
 ```
-- The **stage** fills most of the screen (landscape on tablets; on phones it stacks with the panel below).
-- **Live equation chips** always mirror the toy's state.
-- A **2D | 3D toggle** appears only when the toy has a 3-D renderer and the device supports WebGL well. Otherwise the app stays 2-D automatically.
-- **Numpad** slides up for answers (big ০–৯, ⌫, ✓).
-- The **lesson strip** for the chapter runs along the top or bottom on wide screens.
+- **Change chapter / lesson** from anywhere: the chapter card in the header or 📚 opens a drawer with all 13 chapters and their lessons (unbuilt ones locked); the bottom **lesson strip** lists this chapter's lessons as picture cards with stars.
+- **Rail** (left; a bottom bar on phones): map, chapters, game, settings, voice, language. It expands to show labels.
+- **Stage**: the toy on grid paper. **Callouts**: each toy part (pile, children, plate…) has a pulsing dot and a name tag with a dashed leader line; tapping it opens an **inspector card** with a spoken note and, in the lab, its **knobs**. The **dock** holds undo · redo · restart · 2-D/2.5-D · labels · 💡 hint.
+- **Side panel tabs = modes**: ❓ Explore → ▲ Try → 🎛️ Experiment (lab) → 📘 Learn → ■ Practice (check understanding). Each "next" button leads to the following tab.
+- **"গণিতের ভাষায়" box** (the sites' code panel): the toy's live number sentence, a running comment, and once done the multiplication check (৪ × ৩ + ২ = ১৪) and the remainder rule. **▶ চালাও** plays the idea step by step.
+- Phones: everything stacks (header, stage, controls, tabs, panel, math box, strip); name tags start hidden (dots only).
 
 ### 4. Practice / Challenge
 One item at a time, progress dots, hint button, "দেখাও", and an end card with stars, a sticker reveal, and "আবার খেলি / পরের পাঠ".

@@ -11,6 +11,7 @@ import {
   type Config,
   type State,
 } from './model';
+import { autoplay, explain, parts, Thumbnail, tips } from './parts';
 import { S } from './strings';
 import { PlatesView2D } from './View2D';
 
@@ -31,6 +32,12 @@ export const platesAndPacks = defineToy<State, Config, Action>({
   check,
   expectSchema,
   describe,
+  parts,
+  explain,
+  autoplay,
+  clear: { type: 'reset' },
+  tips,
+  thumbnail: Thumbnail,
 });
 
 export * from './model';

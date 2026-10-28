@@ -3,8 +3,8 @@
  * a separate chunk that 2-D-only devices never download.
  */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useEffect, useLayoutEffect, useRef, type ReactNode } from 'react';
-import type { Group } from 'three';
+import { useEffect, useLayoutEffect, useMemo, useRef, type ReactNode } from 'react';
+import { Vector3, type Group } from 'three';
 
 /** Keeps `width` world units across the canvas, whatever its pixel size. */
 function FitWidth({ width, minHeight }: { width: number; minHeight: number }) {
@@ -131,4 +131,36 @@ export function BlobShadow({
       <meshBasicMaterial color="#2B2B40" transparent opacity={opacity} depthWrite={false} />
     </mesh>
   );
+}
+
+/**
+ * A part's spot in a 3-D scene (see `SvgAnchor`): a 1-px DOM point beside the canvas, moved to the
+ * projected position on every rendered frame.
+ */
+export function Anchor3D({ id, position }: { id: string; position: [number, number, number] }) {
+  const { camera, size, gl } = useThree();
+  const el = useMemo(() => {
+    const span = document.createElement('span');
+    span.dataset.kgAnchor = id;
+    Object.assign(span.style, {
+      position: 'absolute',
+      left: '0',
+      top: '0',
+      width: '1px',
+      height: '1px',
+      pointerEvents: 'none',
+    });
+    return span;
+  }, [id]);
+  useLayoutEffect(() => {
+    gl.domElement.parentElement?.appendChild(el);
+    return () => el.remove();
+  }, [gl, el]);
+  const v = useMemo(() => new Vector3(), []);
+  const [x, y, z] = position;
+  useFrame(() => {
+    v.set(x, y, z).project(camera);
+    el.style.transform = `translate(${((v.x + 1) / 2) * size.width}px, ${((1 - v.y) / 2) * size.height}px)`;
+  });
+  return null;
 }

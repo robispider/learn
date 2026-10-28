@@ -63,6 +63,31 @@ describe('Class 3 Math content', () => {
             }
           }
         });
+        it('has lab challenges that are valid and can be solved by playing and turning knobs', () => {
+          if (!topic.lab) return;
+          const toy = book.toys[topic.lab.toy]!;
+          toy.configSchema.parse(topic.lab.config);
+          const ids = topic.lab.challenges.map((c) => c.id);
+          expect(new Set(ids).size, 'unique challenge ids').toBe(ids.length);
+          for (const c of topic.lab.challenges) {
+            expect(characters.has(c.say), c.say).toBe(true);
+            const setup = toy.configSchema.parse(c.setup ?? topic.lab.config) as Record<string, unknown>;
+            if (c.choose) expect(c.choose.answer).toBeLessThan(c.choose.options.length);
+            if (c.expect === undefined) continue;
+            toy.expectSchema!.parse(c.expect);
+            // Try every knob setting the child can reach (total, children / pack size), then share it all.
+            let solvable = false;
+            for (let total = 0; total <= 30 && !solvable; total++)
+              for (let n = 1; n <= 6 && !solvable; n++) {
+                let s = toy.init(setup);
+                s = toy.reducer(s, { type: 'setTotal', value: total });
+                s = toy.reducer(s, { type: setup.mode === 'share' ? 'setPlates' : 'setSize', value: n });
+                s = toy.reducer(s, { type: 'dealAll' });
+                solvable = toy.check!(s, c.expect);
+              }
+            expect(solvable, `${topic.id} lab ${c.id}`).toBe(true);
+          }
+        });
         it('uses known practice templates, misconceptions, words and stickers', () => {
           for (const t of topic.practice.templates) expect(hasTemplate(t.id), t.id).toBe(true);
           for (const m of topic.practice.misconceptions) expect(hasMisconception(m), m).toBe(true);

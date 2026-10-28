@@ -325,66 +325,7 @@ a.kg-btn {
   }
 }
 
-/* ---------- Lesson ---------- */
-.kg-lesson-tabs {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 8px 12px 0;
-}
-.kg-lesson {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 12px 16px 32px;
-}
-.kg-lesson-grid {
-  display: grid;
-  gap: 16px;
-}
-.kg-lesson-main {
-  display: grid;
-  gap: 12px;
-  align-content: start;
-  min-width: 0;
-}
-.kg-lesson-panel {
-  display: grid;
-  gap: 12px;
-  align-content: start;
-  min-width: 0;
-}
-@media (min-width: 1000px) {
-  .kg-lesson-grid {
-    grid-template-columns: minmax(0, 1.55fr) minmax(340px, 1fr);
-    align-items: start;
-  }
-  .kg-lesson-panel {
-    position: sticky;
-    top: 84px;
-  }
-}
-/* On phones: who is talking and what to do, then the stage, then the answer pad. */
-.kg-panel-top,
-.kg-panel-rest {
-  display: grid;
-  gap: 12px;
-  align-content: start;
-}
-@media (max-width: 999px) {
-  .kg-lesson-panel {
-    display: contents;
-  }
-  .kg-panel-top {
-    order: 0;
-  }
-  .kg-lesson-main {
-    order: 1;
-  }
-  .kg-panel-rest {
-    order: 2;
-  }
-}
+/* ---------- Lesson panels ---------- */
 .kg-panel-actions {
   display: flex;
   flex-wrap: wrap;
@@ -424,10 +365,6 @@ a.kg-btn {
 }
 
 /* ---------- Stage ---------- */
-.kg-toy {
-  display: grid;
-  gap: 10px;
-}
 .kg-stage {
   position: relative;
   width: 100%;
@@ -456,12 +393,6 @@ a.kg-btn {
   inset: 0;
   background: linear-gradient(#fff4dd, #f2d9ad);
 }
-.kg-toolbar {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  flex-wrap: wrap;
-}
 .kg-segment {
   display: inline-flex;
   border: 2px solid var(--ink);
@@ -483,9 +414,6 @@ a.kg-btn {
 .kg-segment button[aria-pressed='true'] {
   background: var(--accent-2);
   color: #fff;
-}
-.kg-toolbar .kg-segment {
-  margin-left: auto;
 }
 .kg-toy-controls {
   display: grid;
@@ -534,31 +462,7 @@ a.kg-btn {
   font-size: 24px;
   font-weight: 700;
 }
-.kg-equation {
-  padding: 12px;
-  border-radius: 24px;
-  background: var(--bubble-lavender);
-  border: 2px solid var(--ink);
-}
-
 /* ---------- Learn ---------- */
-.kg-learn {
-  display: grid;
-  gap: 16px;
-  max-width: 860px;
-  margin: 0 auto;
-}
-.kg-learn__rule {
-  display: flex;
-  gap: 16px;
-  align-items: flex-end;
-}
-@media (max-width: 560px) {
-  .kg-learn__rule {
-    flex-direction: column;
-    align-items: center;
-  }
-}
 .kg-words {
   list-style: none;
   padding: 0;

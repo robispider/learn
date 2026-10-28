@@ -42,6 +42,46 @@ export const S = {
   more: { bn: 'বাড়াও', en: 'more' },
   less: { bn: 'কমাও', en: 'fewer' },
 
+  // Parts (callouts) and knobs.
+  partPile: { bn: 'স্তূপ', en: 'The pile' },
+  partPileNote: {
+    bn: 'ভাগ করার আগে সব {item} এখানে থাকে। শেষে যা পড়ে থাকে, সেটাই অবশিষ্ট।',
+    en: 'All the {item} start here. Whatever is left at the end is the remainder.',
+  },
+  partKids: { bn: 'শিশুরা', en: 'The children' },
+  partKidsNote: {
+    bn: 'যতজন শিশু, ততগুলো সমান ভাগ। এটাই ভাজক।',
+    en: 'As many children, as many equal shares. This is the divisor.',
+  },
+  partPlate: { bn: 'প্লেট', en: 'A plate' },
+  partPlateNote: {
+    bn: 'নিচের সংখ্যাটি বলে প্লেটে কয়টি আছে। সব প্লেটে সমান হলে ভাগ ঠিক।',
+    en: 'The number below says how many are on it. Fair means every plate has the same.',
+  },
+  partPack: { bn: 'প্যাকেট', en: 'A pack' },
+  partPackNote: {
+    bn: 'প্রতিটি প্যাকেটে সমান সংখ্যক থাকে। একটি প্যাকেট পায় একজন শিশু।',
+    en: 'Every pack holds the same number. One child gets one pack.',
+  },
+  knobTotal: { bn: 'কয়টি {item}', en: 'How many {item}' },
+  knobItem: { bn: 'কী ভাগ করবে', en: 'What to share' },
+  knobPlates: { bn: 'কয়জন শিশু', en: 'How many children' },
+  knobSize: { bn: 'প্যাকেটে কয়টি', en: 'How many in a pack' },
+
+  // "Math language" lines and play tips.
+  noteStart: { bn: 'এখনও ভাগ শুরু হয়নি', en: 'Not shared yet' },
+  noteShareProgress: { bn: '{n} বার দেওয়া হলো, স্তূপে {p}টি', en: '{n} rounds given, {p} in the pile' },
+  noteGroupProgress: { bn: '{k}টি প্যাকেট হলো, স্তূপে {p}টি', en: '{k} packs made, {p} in the pile' },
+  noteUnfair: { bn: 'সবাই সমান পায়নি', en: 'Not equal yet' },
+  noteCheck: { bn: 'গুণ করে মিলিয়ে দেখি', en: 'Check by multiplying' },
+  noteRule: { bn: 'অবশিষ্ট সবসময় ভাজকের চেয়ে ছোট', en: 'The remainder is always less than the divisor' },
+  tipTap: { bn: 'প্লেটে ট্যাপ করো: স্তূপ থেকে একটি যাবে।', en: 'Tap a plate: one goes from the pile.' },
+  tipDrag: {
+    bn: 'কোনো জিনিস টেনে অন্য প্লেটে বা স্তূপে রাখো।',
+    en: 'Drag a thing to another plate or back to the pile.',
+  },
+  tipPlay: { bn: '▶ চাপলে নিজে নিজে ভাগ হয়ে যাবে।', en: 'Press ▶ to watch it share by itself.' },
+
   // Equation chip labels.
   leftWord: { bn: 'অবশিষ্ট', en: 'remainder' },
   shareLabels: {

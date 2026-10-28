@@ -5,7 +5,7 @@
 import { Bag3D, Item3D, Kid3D, Plate3D, Table3D } from '@khelaghor/art/three';
 import { KID_IDS, LOOKS } from '@khelaghor/art';
 import { PickPlaceProvider, usePickPlace, type ToyViewProps } from '@khelaghor/stage';
-import { BlobShadow, Mover, ThreeStage } from '@khelaghor/stage/three';
+import { Anchor3D, BlobShadow, Mover, ThreeStage } from '@khelaghor/stage/three';
 import type { ThreeEvent } from '@react-three/fiber';
 import { perRow, plateOrder, plateSlot, pileSlot, slotCount, slotGrid } from './layout';
 import { summarize, type Action, type State } from './model';
@@ -87,6 +87,10 @@ function Scene({ state: s, dispatch, readOnly }: ToyViewProps<State, Action>) {
           </group>
         );
       })}
+      <Anchor3D id="pile" position={[PILE[0] - 1.15, 0.05, PILE[1]]} />
+      {share && spots[0] && <Anchor3D id="plate" position={[spots[0].x - 0.62 * scale, 0.05, spots[0].z]} />}
+      {share && kids && spots[0] && <Anchor3D id="kids" position={[spots[0].x, 1.15, -0.75]} />}
+      {!share && spots[0] && <Anchor3D id="pack" position={[spots[0].x - 0.4 * scale, 0.3, spots[0].z]} />}
       {s.where.map((w, i) => (
         <Mover key={i} to={itemTo(i)} delay={w === null ? 0 : (w % 6) * 0.06}>
           <group onClick={tap(() => pp.pick(`i${i}`))}>

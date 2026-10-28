@@ -40,6 +40,8 @@ export type TopicProgress = {
   /** Best stars from a practice round (0 until one is finished). */
   bestPractice: number;
   sticker: boolean;
+  /** Lab challenges solved (ids). */
+  lab?: string[];
   lastVisit?: number;
 };
 
