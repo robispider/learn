@@ -1,0 +1,92 @@
+# Builds every book app and publishes them to GitHub Pages.
+# Each app lands at /<repo>/class-<N>/<subject>/; the site root links to them.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; let an in-progress deploy finish rather than cancel it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Version comes from "packageManager" in package.json.
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+
+      - name: Collect apps into _site
+        run: |
+          mkdir -p _site
+          links=""
+          count=0
+          for dist in class-*/*/app/dist; do
+            book="${dist%/app/dist}"
+            mkdir -p "_site/$book"
+            cp -r "$dist"/. "_site/$book/"
+            title=$(sed -n 's:.*<title>\(.*\)</title>.*:\1:p' "$dist/index.html" | head -n1)
+            links="$links<li><a href=\"./$book/\">${title:-$book}</a></li>"
+            first="$book"
+            count=$((count + 1))
+          done
+          if [ "$count" -eq 0 ]; then echo "No app builds found" >&2; exit 1; fi
+          # A single book: send the root straight to it. Several: list them.
+          refresh=""
+          if [ "$count" -eq 1 ]; then refresh="<meta http-equiv=\"refresh\" content=\"0; url=./$first/\" />"; fi
+          cat > _site/index.html <<EOF
+          <!doctype html>
+          <html lang="bn">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              $refresh
+              <title>খেলাঘর</title>
+              <style>
+                body { margin: 0; min-height: 100dvh; display: grid; place-items: center;
+                       font: 600 20px system-ui, sans-serif; color: #2b2b40; background: #fff8ec; }
+                ul { list-style: none; padding: 0; }
+                li { margin: 12px 0; }
+                a { color: #e2572a; }
+              </style>
+            </head>
+            <body>
+              <main><h1>খেলাঘর</h1><ul>$links</ul></main>
+            </body>
+          </html>
+          EOF
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

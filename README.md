@@ -28,4 +28,7 @@ pnpm review:export     # writes class-3/math/review/c3-math-strings.md for Bangl
 pnpm build             # static site in class-3/math/app/dist
 ```
 
+## Publish
+Every push to `main` runs [.github/workflows/pages.yml](.github/workflows/pages.yml): typecheck, test, build, then deploy each book app to GitHub Pages at `/learn/class-<N>/<subject>/`. One-time setup: in the repo's **Settings → Pages**, set **Source** to **GitHub Actions**. You can also run it by hand from the Actions tab.
+
 In the app, the grown-ups' settings (⚙, behind a small sum) link to the **review page**: every character pose, the object library, all strings, and a download of the review file.
