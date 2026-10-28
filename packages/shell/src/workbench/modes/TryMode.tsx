@@ -75,7 +75,12 @@ export function TryMode({
   return (
     <>
       <Slot name="stage">
-        <ToyStage lt={lt} onState={onState} caption={block.title ? pick(block.title, lang) : undefined} />
+        <ToyStage
+          lt={lt}
+          onState={onState}
+          view={block.view}
+          caption={block.title ? pick(block.title, lang) : undefined}
+        />
       </Slot>
       <Slot name="panel">
         <PanelHead topic={topic} />

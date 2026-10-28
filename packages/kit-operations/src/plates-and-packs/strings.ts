@@ -13,7 +13,6 @@ export const S = {
   title: { bn: 'প্লেট ও প্যাকেট', en: 'Plates & Packs' },
   dealRound: { bn: 'একবার করে দাও', en: 'Give one to each' },
   makePack: { bn: '{n}টি করে প্যাকেট করো', en: 'Make a pack of {n}' },
-  restart: { bn: 'আবার শুরু', en: 'Start again' },
   pile: { bn: 'স্তূপ', en: 'pile' },
 
   shareProgress: { bn: 'প্রত্যেকে {n}টি করে, বাকি {p}টি', en: 'Each has {n}, {p} left' },

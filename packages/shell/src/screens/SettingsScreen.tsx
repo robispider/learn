@@ -145,9 +145,8 @@ export function SettingsScreen() {
               label={t(S.sView)}
               field="view"
               options={[
-                { value: 'auto', label: S.auto },
-                { value: '2d', label: S.view2d },
-                { value: '2.5d', label: S.view25d },
+                { value: 'auto', label: S.viewLesson },
+                { value: '2d', label: S.viewLite },
               ]}
             />
           </div>

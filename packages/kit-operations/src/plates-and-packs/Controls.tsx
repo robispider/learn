@@ -141,9 +141,6 @@ export function PlatesControls({ state: s, dispatch, lang, readOnly }: ToyViewPr
               🛍️ {tr(S.makePack, lang, { n: s.size })}
             </Button>
           )}
-          <Button onClick={() => dispatch({ type: 'reset' })} disabled={sum.pile === s.total}>
-            ↺ {tr(S.restart, lang)}
-          </Button>
         </div>
       )}
       {!readOnly && s.config.editable && (

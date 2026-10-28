@@ -67,7 +67,7 @@ export function LabMode({
   return (
     <>
       <Slot name="stage">
-        <ToyStage lt={lt} onState={onState} tinker />
+        <ToyStage lt={lt} onState={onState} view={lab.view} tinker />
       </Slot>
       <Slot name="panel">
         <PanelHead topic={topic} />

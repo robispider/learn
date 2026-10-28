@@ -1,7 +1,7 @@
 # Bangla review — তৃতীয় শ্রেণির গণিত খেলাঘর
 
 Edit the **bn** column to correct the text, or write a note in **comment**. Put ✔ in **ok** to approve a row.
-Generated file; re-export after content changes. Rows: 441.
+Generated file; re-export after content changes. Rows: 440.
 
 | ok | key | bn | en | comment |
 |---|---|---|---|---|
@@ -262,7 +262,7 @@ Generated file; re-export after content changes. Rows: 441.
 |  | `shell.hideMe` | ছবি লুকাও | Hide picture |  |
 |  | `shell.check` | মিলিয়ে দেখি | Check |  |
 |  | `shell.tryAgain` | প্রায় হয়েছে! আরেকবার দেখো। | Almost! Have another look. |  |
-|  | `shell.doToy` | উপরের খেলনায় করে দেখাও। | Do it with the toy above. |  |
+|  | `shell.doToy` | খেলনায় করে দেখাও। | Show it with the toy. |  |
 |  | `shell.praise1` | দারুণ! | Great! |  |
 |  | `shell.praise2` | ঠিক হয়েছে! | That’s right! |  |
 |  | `shell.praise3` | চমৎকার! | Wonderful! |  |
@@ -303,11 +303,9 @@ Generated file; re-export after content changes. Rows: 441.
 |  | `shell.tools` | খেলনার যন্ত্র | Toy tools |  |
 |  | `shell.showLabels` | নাম দেখাও/লুকাও | Show or hide labels |  |
 |  | `shell.mathCode` | গণিতের ভাষায় | In maths language |  |
+|  | `shell.showMath` | গণিতের ভাষা দেখাও/লুকাও | Show or hide the maths |  |
 |  | `shell.playIt` | চালাও | Play |  |
 |  | `shell.pause` | থামাও | Pause |  |
-|  | `shell.whatToDo` | কী কী করতে পারো | What you can do |  |
-|  | `shell.tipDots` | ছবির বিন্দু বা নামে চাপ দিলে অংশটির কাজ জানবে। | Tap a dot or a label to learn what that part does. |  |
-|  | `shell.tipHint` | আটকে গেলে 💡 সংকেত নাও। | Stuck? Take a 💡 hint. |  |
 |  | `shell.knobsInLab` | এটি বদলাতে চাও? ‘বদলে দেখি’-তে যাও। | Want to change this? Go to ‘Experiment’. |  |
 |  | `shell.goLab` | বদলে দেখি | Experiment |  |
 |  | `shell.labIntro` | এখানে সব কিছু বদলানো যায়! সংখ্যা বদলাও, ▶ চাপো, দেখো কী হয়। তারপর চ্যালেঞ্জগুলো চেষ্টা করো। | Here you can change everything! Change the numbers, press ▶ and see what happens. Then try the challenges. |  |
@@ -336,6 +334,8 @@ Generated file; re-export after content changes. Rows: 441.
 |  | `shell.motionFull` | পুরো | Full |  |
 |  | `shell.sView` | খেলনার দৃশ্য | Toy view |  |
 |  | `shell.auto` | নিজে থেকে | Automatic |  |
+|  | `shell.viewLesson` | পাঠ যেমন চায় | As the lesson needs |  |
+|  | `shell.viewLite` | শুধু ২-ডি (ধীর ফোন) | 2-D only (slow phones) |  |
 |  | `shell.on` | চালু | On |  |
 |  | `shell.off` | বন্ধ | Off |  |
 |  | `shell.sDevice` | এই ডিভাইস | This device |  |
@@ -359,7 +359,6 @@ Generated file; re-export after content changes. Rows: 441.
 |  | `kit.operations.platesAndPacks.title` | প্লেট ও প্যাকেট | Plates & Packs |  |
 |  | `kit.operations.platesAndPacks.dealRound` | একবার করে দাও | Give one to each |  |
 |  | `kit.operations.platesAndPacks.makePack` | {n}টি করে প্যাকেট করো | Make a pack of {n} |  |
-|  | `kit.operations.platesAndPacks.restart` | আবার শুরু | Start again |  |
 |  | `kit.operations.platesAndPacks.pile` | স্তূপ | pile |  |
 |  | `kit.operations.platesAndPacks.shareProgress` | প্রত্যেকে {n}টি করে, বাকি {p}টি | Each has {n}, {p} left |  |
 |  | `kit.operations.platesAndPacks.shareStart` | প্লেটে ট্যাপ করো বা টেনে দাও | Tap a plate or drag one over |  |

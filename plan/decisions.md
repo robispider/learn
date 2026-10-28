@@ -19,6 +19,7 @@
 | D14 | 2026-10-28 | Content JSON shows the **book's exact problems** (12 biscuits, Reza's 14 oranges, 19 chocolates) as short factual prompts; all art is redrawn | Book-aligned, not book-copied |
 | D15 | 2026-10-28 | **Lesson screen = workbench** modelled on learn-arduino / learn-esp32: rail, chapter card + drawer, stage with callouts and a dock, mode tabs in a side panel, a live "math language" box with ▶ play, and a lesson strip | Owner kept the map and story; asked for that UI/UX so kids can switch chapter/lesson, interact, change parts, experiment, add complexity, take hints and check understanding |
 | D16 | 2026-10-28 | **New mode 🎛️ বদলে দেখি (lab)** with knobs and a ★–★★★ challenge ladder per topic; tab order Explore → Try → Lab → Learn → Practice | Not a book mode, so it has the app's own symbol; challenges are content (`topic.lab`) and are checked to be solvable |
+| D17 | 2026-10-28 | **One view per scene, chosen by the lesson** (`view` on a toy block; no 2D/2.5D switch). **Simulation info lives on the stage** (math row on top, status + action at the bottom, dock on the right); the side panel only tells the lesson | Owner: the same thing doesn't need 2-D and 2.5-D together, and the panels were overlapping and repeating. Settings keep "2-D only" for slow phones |
 
 ## Still open (decide when we get there)
 - Phase 0 leftovers: the ribbon-cutting Try step for 6.5 (needs a small ruler toy), Playwright smoke tests, a real low-end phone test of the 2.5-D view.

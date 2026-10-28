@@ -41,10 +41,7 @@ export function Workbench() {
       setSlots((s) => (s[name] === el ? s : { ...s, [name]: el })),
     [],
   );
-  const refs = useMemo(
-    () => ({ stage: slotRef('stage'), panel: slotRef('panel'), code: slotRef('code') }),
-    [slotRef],
-  );
+  const refs = useMemo(() => ({ stage: slotRef('stage'), panel: slotRef('panel') }), [slotRef]);
   const setHint = useCallback((fn: (() => void) | null) => setHintFn(() => fn), []);
   const goMode = useCallback((m: string) => nav(`/t/${topicId}/${m}`), [nav, topicId]);
   const wb = useMemo(
@@ -111,7 +108,6 @@ export function Workbench() {
             ))}
           </div>
           <div className="kg-wb-panel" ref={refs.panel} />
-          <div className="kg-wb-code" ref={refs.code} />
         </aside>
         <LessonStrip chapter={chapter} current={topic.id} onChapters={() => setDrawer(true)} />
         <ChapterDrawer open={drawer} onClose={() => setDrawer(false)} current={chapter} />

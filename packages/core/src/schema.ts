@@ -57,6 +57,8 @@ export const StepSchema = z.object({
 export const ToyBlockSchema = z.object({
   toy: z.string(),
   config: z.unknown(),
+  /** One view per scene, picked for the learning need (default 2-D). Falls back to 2-D on weak devices. */
+  view: z.enum(['2d', '2.5d', '3d']).optional(),
 });
 
 /** A lab challenge: a Try-style step with a title and a difficulty, for "change it and see". */

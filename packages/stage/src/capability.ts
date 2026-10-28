@@ -96,3 +96,18 @@ export function chooseView(
   if (preference !== 'auto') return allowed.includes(preference) ? preference : '2d';
   return allowed.reduce<ViewMode>((best, v) => (RANK[v] > RANK[best] ? v : best), '2d');
 }
+
+/**
+ * The view a lesson scene asked for (one view per scene, chosen for the learning need), if the toy has
+ * it and the device can run it; otherwise 2-D. A '2d' preference (lite mode in settings) forces 2-D.
+ */
+export function lessonView(
+  toyViews: ViewMode[],
+  cap: Capability | null,
+  wanted: ViewMode = '2d',
+  preference: 'auto' | ViewMode = 'auto',
+): ViewMode {
+  if (preference === '2d' || wanted === '2d' || !toyViews.includes(wanted)) return '2d';
+  const max = cap ? RANK[cap.best] : 0;
+  return RANK[wanted] <= max ? wanted : '2d';
+}

@@ -29,10 +29,14 @@ describe('Class 3 Math content', () => {
             {
               toy: topic.explore.toy,
               config: topic.explore.config,
+              view: topic.explore.view,
               steps: [] as (typeof topic.try)[number]['steps'],
             },
             ...topic.try,
           ];
+          for (const b of [...blocks, ...(topic.lab ? [topic.lab] : [])]) {
+            if (b.view) expect(book.toys[b.toy]!.renderers[b.view], `${b.toy}: ${b.view}`).toBeDefined();
+          }
           for (const b of blocks) {
             const toy = book.toys[b.toy];
             expect(toy, b.toy).toBeDefined();

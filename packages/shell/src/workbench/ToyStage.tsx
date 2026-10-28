@@ -1,8 +1,8 @@
 import { useSettings } from '@khelaghor/core';
-import { formatNumber, type Lang } from '@khelaghor/i18n';
+import type { Lang } from '@khelaghor/i18n';
 import {
   availableViews,
-  chooseView,
+  lessonView,
   ToyHost,
   useCapability,
   useToy,
@@ -11,14 +11,12 @@ import {
   type ViewMode,
 } from '@khelaghor/stage';
 import { EquationChips, IconButton } from '@khelaghor/ui';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { useBook } from '../book';
 import { useLang, useT } from '../hooks';
 import { S } from '../strings';
-import { Slot, useWb } from './context';
+import { useWb } from './context';
 import { StageOverlay } from './StageOverlay';
-
-const VIEW_LABEL = { '2d': S.view2d, '2.5d': S.view25d, '3d': S.view3d } as const;
 
 /**
  * A toy for one lesson area. A new `config` (or `resetKey`) starts it fresh. Modes that show the toy's
@@ -66,57 +64,61 @@ function useAutoplay(lt: LessonToy, autoStart: boolean) {
   return { playing, canPlay, start, stop: () => setPlaying(false) };
 }
 
-function MathCode({
+/**
+ * The live "math language" as one row across the top of the stage (its own space, never over the scene):
+ * the step caption, each line as a segment with its comment underneath, and ▶ to play the idea.
+ */
+function MathSlate({
   lines,
   lang,
   play,
-  onRestart,
+  caption,
 }: {
   lines: EqLine[];
   lang: Lang;
   play: ReturnType<typeof useAutoplay>;
-  onRestart?: () => void;
+  caption?: ReactNode;
 }) {
   const t = useT();
+  // The scene starts below the row, however many lines it wraps to.
+  const ref = useRef<HTMLElement>(null);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    const host = el?.parentElement;
+    if (!el || !host) return;
+    const ro = new ResizeObserver(() => host.style.setProperty('--slate-h', `${el.offsetHeight}px`));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   return (
-    <section className="kg-code" aria-label={t(S.mathCode)}>
-      <header className="kg-code__head">
-        <span className="kg-kicker">✏️ {t(S.mathCode)}</span>
-        {onRestart && (
-          <IconButton label={t(S.restart)} onClick={onRestart}>
-            ↺
-          </IconButton>
-        )}
-        {play.canPlay && (
-          <button
-            type="button"
-            className="kg-code__run"
-            aria-pressed={play.playing}
-            onClick={play.playing ? play.stop : play.start}
-          >
-            {play.playing ? `⏸ ${t(S.pause)}` : `▶ ${t(S.playIt)}`}
-          </button>
-        )}
-      </header>
-      <ol className="kg-code__lines">
+    <section className="kg-slate" aria-label={t(S.mathCode)} ref={ref}>
+      <span className="kg-slate__title">{caption ?? `✏️ ${t(S.mathCode)}`}</span>
+      <ol className="kg-slate__lines">
         {lines.map((l, i) => (
-          <li key={i}>
-            <span className="kg-code__no" aria-hidden>
-              {formatNumber(i + 1, lang)}
-            </span>
+          <li key={i} data-note-only={l.parts.length === 0 || undefined}>
             {l.parts.length > 0 && <EquationChips parts={l.parts} lang={lang} />}
-            {l.note && <span className="kg-code__note">{`// ${l.note}`}</span>}
+            {l.note && <span className="kg-slate__note">{l.note}</span>}
           </li>
         ))}
       </ol>
+      {play.canPlay && (
+        <button
+          type="button"
+          className="kg-slate__run"
+          aria-pressed={play.playing}
+          onClick={play.playing ? play.stop : play.start}
+        >
+          {play.playing ? `⏸ ${t(S.pause)}` : `▶ ${t(S.playIt)}`}
+        </button>
+      )}
     </section>
   );
 }
 
 /**
- * The lesson stage: the toy on a drawing-board canvas with callouts, a floating toolbar
- * (undo · redo · restart · 2D|2.5D · labels · hint), the toy's own controls, and its live
- * "math language" lines in the side panel's code box.
+ * The lesson stage. Everything about the simulation lives here, so the side panel only tells the lesson:
+ * the toy (in the one view this scene asks for) with callouts, the "math language" row (top), the tool dock (undo · redo · restart · labels · hint) and the toy's own
+ * status and action buttons (bottom).
  */
 export function ToyStage({
   lt,
@@ -127,8 +129,11 @@ export function ToyStage({
   code = true,
   autoPlay = false,
   caption,
+  view: wanted,
 }: {
   lt: LessonToy;
+  /** The scene's view from the lesson content (default 2-D). */
+  view?: ViewMode;
   onState?: (state: unknown) => void;
   readOnly?: boolean;
   /** Knobs work in the inspector (the lab). */
@@ -145,9 +150,7 @@ export function ToyStage({
   const cap = useCapability();
   const pref = useSettings((s) => s.view);
   const setSettings = useSettings((s) => s.set);
-  const views = availableViews(toy);
-  const view = chooseView(views, cap, pref);
-  const offered = views.filter((v) => v === '2d' || chooseView(views, cap, v) === v);
+  const view = lessonView(availableViews(toy), cap, wanted, pref);
   // State, not a ref: the overlay's effects need the element on their first run.
   const [canvas, setCanvas] = useState<HTMLDivElement | null>(null);
   const play = useAutoplay(lt, autoPlay);
@@ -163,6 +166,8 @@ export function ToyStage({
       ? [{ parts: toy.toEquation(lt.state, lang) }]
       : [];
   const Controls = toy.controls;
+  const dock = toolbar && !readOnly;
+  const slate = code && lines.length > 0;
   // Stop playing as soon as the child takes over.
   const dispatch = (a: unknown) => {
     play.stop();
@@ -170,9 +175,8 @@ export function ToyStage({
   };
 
   return (
-    <div className="kg-wb-toy">
-      {caption && <div className="kg-wb-caption">{caption}</div>}
-      <div className="kg-canvas" data-view={view} data-dock={toolbar && !readOnly} ref={setCanvas}>
+    <div className="kg-wb-toy" data-dock={dock} data-slate={slate}>
+      <div className="kg-canvas" data-view={view} ref={setCanvas}>
         <div className="kg-canvas__scene">
           <ToyHost
             toy={toy}
@@ -193,7 +197,8 @@ export function ToyStage({
             dep={`${view}|${JSON.stringify(lt.state)}`}
           />
         )}
-        {toolbar && !readOnly && (
+        {caption && !slate && <div className="kg-stage-caption">{caption}</div>}
+        {dock && (
           <div className="kg-dock" role="toolbar" aria-label={t(S.tools)}>
             <IconButton label={t(S.undo)} onClick={lt.undo} disabled={!lt.canUndo}>
               ⟲
@@ -204,23 +209,6 @@ export function ToyStage({
             <IconButton label={t(S.restart)} onClick={lt.restart}>
               ↺
             </IconButton>
-            {offered.length > 1 && (
-              <>
-                <span className="kg-dock__sep" />
-                <div className="kg-segment" role="group" aria-label={t(S.view)}>
-                  {offered.map((v: ViewMode) => (
-                    <button
-                      key={v}
-                      type="button"
-                      aria-pressed={view === v}
-                      onClick={() => setSettings({ view: v })}
-                    >
-                      {t(VIEW_LABEL[v])}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
             {toy.parts && (
               <>
                 <span className="kg-dock__sep" />
@@ -237,11 +225,11 @@ export function ToyStage({
           </div>
         )}
       </div>
-      {Controls && <Controls state={lt.state} dispatch={dispatch} lang={lang} readOnly={readOnly} />}
-      {code && lines.length > 0 && (
-        <Slot name="code">
-          <MathCode lines={lines} lang={lang} play={play} onRestart={readOnly ? undefined : lt.restart} />
-        </Slot>
+      {slate && <MathSlate lines={lines} lang={lang} play={play} caption={caption} />}
+      {Controls && (
+        <div className="kg-actionbar">
+          <Controls state={lt.state} dispatch={dispatch} lang={lang} readOnly={readOnly} />
+        </div>
       )}
     </div>
   );

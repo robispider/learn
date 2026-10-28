@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useRef, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
-export type SlotName = 'stage' | 'panel' | 'code';
+export type SlotName = 'stage' | 'panel';
 
 type Wb = {
   slots: Partial<Record<SlotName, HTMLElement | null>>;
@@ -23,7 +23,7 @@ export function useWb(): Wb {
   return w;
 }
 
-/** Renders into one of the workbench areas (stage, side panel, math-code box), wherever it sits in the tree. */
+/** Renders into one of the workbench areas (stage or side panel), wherever it sits in the tree. */
 export function Slot({ name, children }: { name: SlotName; children: ReactNode }) {
   const el = useWb().slots[name];
   return el ? createPortal(children, el) : null;

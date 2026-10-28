@@ -87,7 +87,9 @@ interface ToyDefinition<State, Config> {
 ```
 Renderers mark where each part is with `SvgAnchor` (2-D) or `Anchor3D` (2.5-D/3-D) from `@khelaghor/stage`; the shell draws the callouts there, so callouts work the same in every view.
 
-A lesson only references `toy`, `config`, `steps`, `lab` and `practice` (see [05-tech-stack.md](05-tech-stack.md#content-model)).
+A toy may ship several renderers, but each lesson scene picks one with `view` (default `'2d'`); the shell never offers a switch between them (decision D17).
+
+A lesson only references `toy`, `config`, `view`, `steps`, `lab` and `practice` (see [05-tech-stack.md](05-tech-stack.md#content-model)).
 
 ## Rules for what goes where
 | Question | Put it in |

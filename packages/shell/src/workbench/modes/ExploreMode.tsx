@@ -1,20 +1,18 @@
 import { useProgress, type Topic } from '@khelaghor/core';
-import { pick } from '@khelaghor/i18n';
 import { Button, Confetti } from '@khelaghor/ui';
 import { playSfx } from '@khelaghor/voice';
 import { useCallback, useState } from 'react';
 import { useBook } from '../../book';
 import { DialogueLine } from '../../components/Dialogue';
-import { useLang, useT } from '../../hooks';
+import { useT } from '../../hooks';
 import { S } from '../../strings';
 import { Slot, useHintButton } from '../context';
-import { PanelHead, Tips } from '../PanelBits';
+import { PanelHead } from '../PanelBits';
 import { ToyStage, useLessonToy } from '../ToyStage';
 
 /** ❓ মূল প্রশ্ন: the book's question, the story hook, and free play with the toy until the goal is reached. */
 export function ExploreMode({ topic, onNext }: { topic: Topic; onNext: () => void }) {
   const book = useBook();
-  const lang = useLang();
   const t = useT();
   const mark = useProgress((s) => s.mark);
   const { explore } = topic;
@@ -44,16 +42,10 @@ export function ExploreMode({ topic, onNext }: { topic: Topic; onNext: () => voi
   return (
     <>
       <Slot name="stage">
-        <ToyStage lt={lt} onState={onState} />
+        <ToyStage lt={lt} onState={onState} view={explore.view} />
       </Slot>
       <Slot name="panel">
         <PanelHead topic={topic} />
-        <div className="kg-question">
-          <span className="kg-kicker">
-            {book.data.modeSymbols.explore?.symbol} {pick(book.data.modeSymbols.explore?.name, lang)}
-          </span>
-          <p>{pick(topic.question, lang)}</p>
-        </div>
         {done ? (
           <DialogueLine
             speaker={book.data.companion}
@@ -98,7 +90,6 @@ export function ExploreMode({ topic, onNext }: { topic: Topic; onNext: () => voi
             </Button>
           )}
         </div>
-        <Tips tips={tips} />
       </Slot>
       <Confetti burst={burst} />
     </>

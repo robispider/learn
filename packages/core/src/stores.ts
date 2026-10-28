@@ -28,7 +28,14 @@ export const useSettings = create<SettingsStore>()(
       view: 'auto',
       set: (patch) => set(patch),
     }),
-    { name: `${STORAGE_PREFIX}settings`, storage: jsonStorage, version: 1 },
+    {
+      name: `${STORAGE_PREFIX}settings`,
+      storage: jsonStorage,
+      version: 2,
+      // v2: lessons pick the view; the old per-toy 2D/2.5D switch no longer exists, so start from 'auto'.
+      migrate: (old, version) =>
+        ({ ...(old as Settings), ...(version < 2 ? { view: 'auto' } : {}) }) as SettingsStore,
+    },
   ),
 );
 

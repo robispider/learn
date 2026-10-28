@@ -29,6 +29,7 @@
       "explore": {
         "toy": "operations/plates-and-packs",
         "config": { "mode": "share", "total": 12, "plates": 3, "item": "biscuit" },
+        "view": "2.5d",
         "hook": [
           {
             "say": "rafi",
@@ -322,6 +323,7 @@
       "explore": {
         "toy": "operations/plates-and-packs",
         "config": { "mode": "group", "total": 12, "size": 3, "item": "biscuit" },
+        "view": "2.5d",
         "hook": [
           {
             "say": "rafi",
@@ -566,6 +568,7 @@
       "explore": {
         "toy": "operations/plates-and-packs",
         "config": { "mode": "share", "total": 14, "plates": 4, "item": "orange", "labels": "terms" },
+        "view": "2.5d",
         "hook": [
           {
             "say": "rafi",
