@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useRef, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 
-export type SlotName = 'stage' | 'panel';
+/** `code` is the ▶ চালাও tab of the side panel: the live "math language" of the stage's toy. */
+export type SlotName = 'stage' | 'panel' | 'code';
 
 type Wb = {
   slots: Partial<Record<SlotName, HTMLElement | null>>;
@@ -13,6 +14,13 @@ type Wb = {
   setLabels: (on: boolean) => void;
   /** Switch the lesson tab (e.g. a callout's "change it in the lab"). */
   goMode: (mode: string) => void;
+  /** This lesson has a 🎛️ lab tab to send knob changes to. */
+  canLab: boolean;
+  /** The ▶ চালাও tab is showing instead of the mode's panel. */
+  run: boolean;
+  setRun: (on: boolean) => void;
+  /** The stage's toy has math lines to show, so the ▶ চালাও tab is offered. */
+  setHasCode: (on: boolean) => void;
 };
 
 export const WbCtx = createContext<Wb | null>(null);

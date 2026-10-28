@@ -30,13 +30,13 @@ Modelled on the inspiration sites' workbench: one screen per lesson, nothing scr
 │🗺│ 🏡 তৃতীয় শ্রেণির গণিত খেলাঘর          [🍪 অধ্যায় ৬ · ভাগ ▓▓░ ★২/৯]  ★ ৫   │
 │📚├────────────────────────────────────────────┬─────────────────────────────┤
 │🎮│ ┌ STAGE ─────────────────────────────────┐ │ ❓মূল প্রশ্ন ▲কাজ 🎛️বদলে দেখি │
-│⚙ │ │ রেজার কমলালেবু │ [১৪]÷[৪]=[৩], অবশিষ্ট [২] │ │ 📘শিখি ■অনুশীলন            │
-│  │ │   ৪×৩+২=১৪ // মিলিয়ে দেখি │ ২<৪  [▶ চালাও]│ ├─────────────────────────────┤
-│  │ │                                    ⟲  │ │ only the lesson:            │
-│  │ │  🏷 স্তূপ ┆   🏷 শিশুরা ┆               ⟳  │ │ who says what, the step,    │
-│  │ │      ●  🍊🍊   ● 🍽 🍽 🍽 🍽          ↺  │ │ answer boxes, hints,        │
-│  │ │                                    🏷  │ │ knobs + challenge ladder    │
-│🔊│ │   (প্রত্যেকে ৩টি, ২টি অবশিষ্ট) [🤲 দাও] 💡 │ │                             │
+│⚙ │ │┌──────┐ ✏️ [১৪]÷[৪]=[৩]  [▶ চালাও]       │ │ 📘শিখি ■অনুশীলন ▶চালাও      │
+│  │ ││বিস্কুট │                                │ ├─────────────────────────────┤
+│  │ ││− ১৪ +│  🏷 স্তূপ ┆   🏷 শিশুরা ┆          │ │ the mode's panel (only the  │
+│  │ ││🍪🍊🍋 │      ●  🍊🍊   ● 🍽 🍽 🍽 🍽     │ │ lesson), or the ▶ চালাও tab: │
+│  │ ││শিশু   │                                │ │ every math line, numbered,  │
+│  │ ││− ৪ + │                                │ │ ▶/⏸ · এক ধাপ · ↺            │
+│🔊│ ││⟲⟳↺🏷💡│ (প্রত্যেকে ৩টি, ২টি অবশিষ্ট) [🤲 দাও] │ │                             │
 │EN│ └────────────────────────────────────────┘ │                             │
 │  ├────────────────────────────────────────────┴─────────────────────────────┤
 │  │ পাঠ  📚 অধ্যায় ৬ · ভাগ ▾   ‹ [🍽 ৬.১ …] [🛍 ৬.২ …] [🔒 ৬.৩ …] [🍊 ৬.৫ …] › │
@@ -44,12 +44,14 @@ Modelled on the inspiration sites' workbench: one screen per lesson, nothing scr
 ```
 - **Change chapter / lesson** from anywhere: the chapter card in the header or 📚 opens a drawer with all 13 chapters and their lessons (unbuilt ones locked); the bottom **lesson strip** lists this chapter's lessons as picture cards with stars.
 - **Rail** (left; a bottom bar on phones): map, chapters, game, settings, voice, language. It expands to show labels.
-- **Stage = everything about the simulation**, so the side panel never repeats it: the toy on grid paper; the **"গণিতের ভাষায়" row** across the top (step caption, the live number sentence, a running comment, and once done the multiplication check ৪ × ৩ + ২ = ১৪ and the rule ভাগশেষ < ভাজক; **▶ চালাও** plays the idea step by step; the scene starts below it, so it never covers the toy); the toy's **status and action button** at the bottom; the **dock** on the right (undo · redo · restart · labels · 💡 hint).
+- **Stage = everything about the simulation**, so the side panel never repeats it: the toy on grid paper; a small **run pill** at the top (step caption, the live number sentence and **▶ চালাও**, which plays the idea step by step and opens the ▶ চালাও tab; the scene starts below it, so it never covers the toy); the toy's **status and action button** at the bottom; the **rail** on the left edge: the toy's **knobs** (− value + for numbers, picture tiles for picks such as which item to share) and under them the tools (undo · redo · restart · labels · 💡 hint). Knobs work in the lab; elsewhere they show the values, locked, with a "বদলে দেখি" button, and they lock while ▶ plays.
+- **▶ চালাও tab** (after the mode tabs, only while the stage has math to show): the full "গণিতের ভাষায়" panel: every line numbered (the live sentence, a running comment, and once done the multiplication check ৪ × ৩ + ২ = ১৪ and the rule ভাগশেষ < ভাজক), the newest highlighted, with ▶/⏸ · এক ধাপ · ↺. It does not change the mode; tapping the mode's own tab goes back to its panel.
 - **Callouts**: each toy part (pile, children, plate…) has a pulsing dot and a name tag with a dashed leader line; tapping it opens an **inspector card** with a spoken note and, in the lab, its **knobs**.
 - **One view per scene.** The lesson content picks 2-D, 2.5-D or 3-D for each scene by learning need (`view` on a toy block, default 2-D); there is no 2D/2.5D switch. In Ch. 6 the story scenes (Explore) use the 2.5-D table to make the problem feel real; counting work (Try, Lab, Learn, Practice) uses 2-D with count badges. Weak devices, or "2-D only" in settings, fall back to 2-D.
-- **Side panel = only the lesson**: the dialogue, the current step, answer boxes and choices, hints, the lab's knobs and challenge ladder, the rule. No repeated question card, no tip lists (💡 cycles the toy's tips).
-- **Side panel tabs = modes**: ❓ Explore → ▲ Try → 🎛️ Experiment (lab) → 📘 Learn → ■ Practice (check understanding). Each "next" button leads to the following tab.
-- Phones: everything stacks (header, math row, stage with the dock along its bottom, status and action button, tabs, panel, strip); name tags start hidden (dots only).
+- **Side panel = only the lesson**: the dialogue, the current step, answer boxes and choices, hints, the lab's challenge ladder, the rule. No repeated question card, no tip lists (💡 cycles the toy's tips).
+- **Side panel tabs = modes**: ❓ Explore → ▲ Try → 🎛️ Experiment (lab) → 📘 Learn → ■ Practice (check understanding), then ▶ চালাও. Each "next" button leads to the following mode.
+- **Practice puts the question on the stage** (a question card over its picture, or alone in the middle); the panel keeps only the progress dots, the answer (number pad or choices), feedback and hints, and the next button. Later some items will be answered on the stage itself (dragging items onto plates); the panel then shows only the status, check and navigation.
+- Phones: everything stacks (header, run pill, stage, the rail as a row of knobs and tools under it, status and action button, tabs, panel, strip); name tags start hidden (dots only).
 
 ### 4. Practice / Challenge
 One item at a time, progress dots, hint button, "দেখাও", and an end card with stars, a sticker reveal, and "আবার খেলি / পরের পাঠ".

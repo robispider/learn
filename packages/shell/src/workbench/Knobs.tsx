@@ -68,30 +68,79 @@ export function KnobControl<A>({ knob, dispatch }: { knob: ToyKnob<A>; dispatch:
   );
 }
 
-/** Every part that has settings, as a list (the lab panel's "change the parts"). */
-export function KnobList<A>({
+/**
+ * Every knob of the toy, compact enough for the stage's left edge: − value + steppers for numbers and
+ * picture tiles for picks (which item to share…). Locked outside the lab and while ▶ plays.
+ */
+export function RailKnobs<A>({
   parts,
   dispatch,
   lang,
+  locked,
 }: {
   parts: ToyPart<A>[];
   dispatch: (a: A) => void;
   lang: Lang;
+  locked: boolean;
 }) {
-  const withKnobs = parts.filter((p) => p.knobs?.length);
-  if (!withKnobs.length) return null;
+  const t = useT();
+  const knobs = parts.flatMap((p) => p.knobs ?? []);
+  if (!knobs.length) return null;
   return (
-    <div className="kg-knob-list">
-      {withKnobs.map((p) => (
-        <section key={p.id} className="kg-knob-group">
-          <h4>
-            <span aria-hidden>{p.icon}</span> {pick(p.title, lang)}
-          </h4>
-          {p.knobs!.map((k) => (
-            <KnobControl key={k.id} knob={k} dispatch={dispatch} />
-          ))}
-        </section>
-      ))}
-    </div>
+    <section className="kg-rail-knobs" aria-label={t(S.changeParts)}>
+      <span className="kg-rail-knobs__title">🎛️ {t(S.changeParts)}</span>
+      {knobs.map((k) => {
+        const label = pick(k.label, lang);
+        if (k.kind === 'number') {
+          const set = (v: number) => {
+            const next = Math.max(k.min, Math.min(k.max, v));
+            if (next !== k.value) dispatch(k.action(next));
+          };
+          return (
+            <div key={k.id} className="kg-rail-knob" role="group" aria-label={label}>
+              <span className="kg-rail-knob__label">{label}</span>
+              <div className="kg-rail-knob__step">
+                <button
+                  type="button"
+                  aria-label={`${label} ${t(S.less)}`}
+                  onClick={() => set(k.value - 1)}
+                  disabled={locked || k.value <= k.min}
+                >
+                  −
+                </button>
+                <output>{formatNumber(k.value, lang)}</output>
+                <button
+                  type="button"
+                  aria-label={`${label} ${t(S.more)}`}
+                  onClick={() => set(k.value + 1)}
+                  disabled={locked || k.value >= k.max}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          );
+        }
+        return (
+          <div key={k.id} className="kg-rail-knob" role="group" aria-label={label}>
+            <span className="kg-rail-knob__label">{label}</span>
+            <div className="kg-rail-knob__tiles">
+              {k.options.map((o) => (
+                <button
+                  key={o.value}
+                  type="button"
+                  aria-pressed={o.value === k.value}
+                  disabled={locked}
+                  onClick={() => o.value !== k.value && dispatch(k.action(o.value))}
+                >
+                  {o.icon}
+                  <span>{pick(o.label, lang)}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </section>
   );
 }

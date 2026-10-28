@@ -195,9 +195,15 @@ export function PracticeMode({ topic }: { topic: Topic }) {
 
   return (
     <>
+      {/* The question lives on the stage (over its picture); the panel only takes the answer. */}
       <Slot name="stage">
         {item.picture && picture ? (
-          <Picture toyId={item.picture.toy} config={item.picture.config} key={item.id} />
+          <div className="kg-practice-stage">
+            <div className="kg-qcard">
+              <DialogueLine speaker={item.speaker} text={item.prompt} key={item.id} size={72} />
+            </div>
+            <Picture toyId={item.picture.toy} config={item.picture.config} key={item.id} />
+          </div>
         ) : (
           <div className="kg-canvas kg-canvas--center">
             <DialogueLine speaker={item.speaker} text={item.prompt} key={item.id} size={120} />
@@ -205,17 +211,11 @@ export function PracticeMode({ topic }: { topic: Topic }) {
         )}
       </Slot>
       <Slot name="panel">
-        <PanelHead topic={topic} />
-        <div>
-          <div className="kg-step-head">
-            <span className="kg-badge">
-              {t(S.itemOf, { i: Math.min(index + (solved ? 0 : 1), count), n: count })}
-            </span>
-            <ProgressDots states={dots} />
-          </div>
-          {item.picture && picture && (
-            <DialogueLine speaker={item.speaker} text={item.prompt} key={item.id} size={72} />
-          )}
+        <div className="kg-step-head">
+          <span className="kg-badge">
+            {t(S.itemOf, { i: Math.min(index + (solved ? 0 : 1), count), n: count })}
+          </span>
+          <ProgressDots states={dots} />
         </div>
         <div className="kg-step">
           {item.ask && (

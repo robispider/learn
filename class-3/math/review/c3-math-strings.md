@@ -1,7 +1,7 @@
 # Bangla review — তৃতীয় শ্রেণির গণিত খেলাঘর
 
 Edit the **bn** column to correct the text, or write a note in **comment**. Put ✔ in **ok** to approve a row.
-Generated file; re-export after content changes. Rows: 440.
+Generated file; re-export after content changes. Rows: 442.
 
 | ok | key | bn | en | comment |
 |---|---|---|---|---|
@@ -306,6 +306,8 @@ Generated file; re-export after content changes. Rows: 440.
 |  | `shell.showMath` | গণিতের ভাষা দেখাও/লুকাও | Show or hide the maths |  |
 |  | `shell.playIt` | চালাও | Play |  |
 |  | `shell.pause` | থামাও | Pause |  |
+|  | `shell.oneStep` | এক ধাপ | One step |  |
+|  | `shell.lockedWhilePlaying` | চলার সময় বদলানো যাবে না | No changes while it plays |  |
 |  | `shell.knobsInLab` | এটি বদলাতে চাও? ‘বদলে দেখি’-তে যাও। | Want to change this? Go to ‘Experiment’. |  |
 |  | `shell.goLab` | বদলে দেখি | Experiment |  |
 |  | `shell.labIntro` | এখানে সব কিছু বদলানো যায়! সংখ্যা বদলাও, ▶ চাপো, দেখো কী হয়। তারপর চ্যালেঞ্জগুলো চেষ্টা করো। | Here you can change everything! Change the numbers, press ▶ and see what happens. Then try the challenges. |  |

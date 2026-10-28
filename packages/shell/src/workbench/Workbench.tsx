@@ -16,9 +16,9 @@ import { TryMode } from './modes/TryMode';
 import './workbench.css';
 
 /**
- * The lesson workbench: rail · header · stage (the toy, with callouts and a tool dock) · side panel
- * (mode tabs, the mode's panel, the live math-language box) · the chapter's lesson strip.
- * Each mode fills the stage and the panel through slots.
+ * The lesson workbench: rail · header · stage (the toy with callouts, a ▶ run pill, and the knobs and
+ * tools along its left edge) · side panel (mode tabs, the mode's panel, or the ▶ চালাও tab with the live
+ * math language) · the chapter's lesson strip. Each mode fills the stage and the panel through slots.
  */
 export function Workbench() {
   const { topicId = '', mode = 'explore' } = useParams();
@@ -35,18 +35,24 @@ export function Workbench() {
   const [labels, setLabels] = useState(() => window.innerWidth >= 700);
   const [rail, setRail] = useState(false);
   const [drawer, setDrawer] = useState(false);
+  const [run, setRun] = useState(false);
+  const [hasCode, setHasCode] = useState(false);
 
   const slotRef = useCallback(
     (name: SlotName) => (el: HTMLElement | null) =>
       setSlots((s) => (s[name] === el ? s : { ...s, [name]: el })),
     [],
   );
-  const refs = useMemo(() => ({ stage: slotRef('stage'), panel: slotRef('panel') }), [slotRef]);
+  const refs = useMemo(
+    () => ({ stage: slotRef('stage'), panel: slotRef('panel'), code: slotRef('code') }),
+    [slotRef],
+  );
   const setHint = useCallback((fn: (() => void) | null) => setHintFn(() => fn), []);
   const goMode = useCallback((m: string) => nav(`/t/${topicId}/${m}`), [nav, topicId]);
+  const canLab = !!found?.topic.lab;
   const wb = useMemo(
-    () => ({ slots, hint, setHint, labels, setLabels, goMode }),
-    [slots, hint, setHint, labels, goMode],
+    () => ({ slots, hint, setHint, labels, setLabels, goMode, canLab, run, setRun, setHasCode }),
+    [slots, hint, setHint, labels, goMode, canLab, run],
   );
 
   useEffect(() => {
@@ -55,8 +61,13 @@ export function Workbench() {
     return () => voice.stop();
   }, [book.data.id, topicId, found, mark]);
   useEffect(() => () => voice.stop(), [mode]);
+  // Each mode opens on its own panel; the ▶ tab goes away when the stage has no math to show.
+  useEffect(() => setRun(false), [topicId, mode]);
+  useEffect(() => {
+    if (!hasCode) setRun(false);
+  }, [hasCode]);
 
-  const order: Mode[] = found?.topic.lab
+  const order: Mode[] = canLab
     ? ['explore', 'try', 'lab', 'learn', 'practice']
     : ['explore', 'try', 'learn', 'practice'];
   if (!found || !order.includes(mode as Mode)) return <Navigate to="/" replace />;
@@ -96,8 +107,8 @@ export function Workbench() {
                 key={m}
                 type="button"
                 role="tab"
-                aria-selected={m === mode}
-                onClick={() => goMode(m)}
+                aria-selected={m === mode && !run}
+                onClick={() => (m === mode ? setRun(false) : goMode(m))}
                 data-done={done[m] || undefined}
               >
                 <span className="kg-wb-tabs__sym" aria-hidden>
@@ -106,8 +117,23 @@ export function Workbench() {
                 {name(m)}
               </button>
             ))}
+            {hasCode && (
+              <button
+                type="button"
+                role="tab"
+                aria-selected={run}
+                className="kg-wb-tabs__run"
+                onClick={() => setRun(true)}
+              >
+                <span className="kg-wb-tabs__sym" aria-hidden>
+                  ▶
+                </span>
+                {t(S.playIt)}
+              </button>
+            )}
           </div>
-          <div className="kg-wb-panel" ref={refs.panel} />
+          <div className="kg-wb-panel" ref={refs.panel} hidden={run} />
+          <div className="kg-wb-panel kg-wb-code" ref={refs.code} hidden={!run} />
         </aside>
         <LessonStrip chapter={chapter} current={topic.id} onChapters={() => setDrawer(true)} />
         <ChapterDrawer open={drawer} onClose={() => setDrawer(false)} current={chapter} />

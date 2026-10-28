@@ -256,9 +256,18 @@
   position: absolute;
   inset: 14px;
 }
-/* Room for the dock (right) and the action bar (bottom), which float on the stage. */
-.kg-wb-toy[data-dock='true'] .kg-canvas__scene {
-  right: 70px;
+/* Room for the rail (left), the run pill (top) and the action bar (bottom), which float on the stage. */
+.kg-wb-toy {
+  --dock-w: 0px;
+}
+.kg-wb-toy[data-dock='tools'] {
+  --dock-w: 68px;
+}
+.kg-wb-toy[data-dock='knobs'] {
+  --dock-w: 168px;
+}
+.kg-wb-toy .kg-canvas__scene {
+  left: calc(var(--dock-w) + 14px);
 }
 .kg-wb-toy:has(.kg-actionbar) .kg-canvas__scene {
   bottom: 80px;
@@ -266,24 +275,31 @@
 .kg-canvas__scene .kg-scene-25d {
   background: transparent;
 }
-/* Tool dock: a column on the stage's right edge */
+/* The rail on the stage's left edge: the toy's knobs (when it has any), then the tools */
 .kg-dock {
   position: absolute;
-  right: 12px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 4;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 6px;
+  gap: 10px;
+  max-height: calc(100% - 24px);
   padding: 8px 6px;
   border: var(--hair);
   border-radius: 16px;
   background: color-mix(in srgb, var(--card) 92%, transparent);
   backdrop-filter: blur(6px);
   box-shadow: 0 6px 18px rgba(43, 43, 64, 0.12);
-  white-space: nowrap;
+  box-sizing: border-box;
+}
+.kg-wb-toy[data-dock='knobs'] .kg-dock {
+  top: 12px;
+  bottom: 12px;
+  width: 156px;
+  transform: none;
+  padding: 10px;
 }
 .kg-dock .kg-icon-btn {
   width: 42px;
@@ -292,13 +308,108 @@
   border-width: 1.5px;
   box-shadow: none;
 }
-.kg-dock__sep {
-  width: 26px;
-  height: 1px;
-  background: var(--line);
+.kg-dock__tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.kg-wb-toy[data-dock='knobs'] .kg-dock__tools {
+  display: grid;
+  grid-template-columns: repeat(3, 42px);
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: var(--hair);
+}
+.kg-dock__note {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.kg-dock > .kg-btn {
+  min-height: 40px;
+  font-size: 14px;
+}
+.kg-rail-knobs {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  overflow: auto;
+}
+.kg-rail-knobs__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.kg-rail-knob {
+  display: grid;
+  gap: 4px;
+}
+.kg-rail-knob__label {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.kg-rail-knob__step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+  border: var(--hair);
+  border-radius: 999px;
+  background: var(--paper);
+}
+.kg-rail-knob__step button {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.kg-rail-knob__step output {
+  font-size: 22px;
+  font-weight: 800;
+}
+.kg-rail-knob__tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.kg-rail-knob__tiles button {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 6px 2px;
+  border: 1.5px dashed var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  color: inherit;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.kg-rail-knob__tiles button[aria-pressed='true'] {
+  border-style: solid;
+  border-color: var(--accent-2);
+  background: color-mix(in srgb, var(--accent-2) 14%, var(--card));
+  font-weight: 700;
+}
+.kg-rail-knobs button:disabled {
+  opacity: 0.45;
+  cursor: default;
 }
 
-/* Stage caption (top right), action bar (bottom) and the maths slate (top left) */
+/* Stage caption (top right), action bar (bottom) and the run pill (top left) */
 .kg-stage-caption {
   position: absolute;
   top: 12px;
@@ -314,13 +425,10 @@
 }
 .kg-actionbar {
   position: absolute;
-  left: 12px;
+  left: calc(var(--dock-w) + 12px);
   right: 12px;
   bottom: 12px;
   z-index: 4;
-}
-.kg-wb-toy[data-dock='true'] .kg-actionbar {
-  right: 76px;
 }
 .kg-actionbar .kg-toy-controls {
   display: flex;
@@ -346,20 +454,21 @@
 .kg-slate {
   position: absolute;
   top: 12px;
-  left: 12px;
-  right: 12px;
+  left: calc(var(--dock-w) + 12px);
   z-index: 5;
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-height: 64px;
-  padding: 6px 8px 6px 14px;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  max-width: calc(100% - var(--dock-w) - 24px);
+  padding: 6px 6px 6px 14px;
   border: var(--hair);
   border-radius: 16px;
   background: color-mix(in srgb, var(--card) 94%, transparent);
+  box-sizing: border-box;
 }
 .kg-wb-toy[data-slate='true'] .kg-canvas__scene {
-  top: calc(var(--slate-h, 64px) + 24px);
+  top: calc(var(--slate-h, 56px) + 24px);
 }
 .kg-slate__title {
   flex: none;
@@ -368,28 +477,6 @@
   font-weight: 700;
   line-height: 1.3;
   color: var(--ink-soft);
-}
-.kg-slate__lines {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 4px 0;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.kg-slate__lines li {
-  display: grid;
-  justify-items: start;
-  gap: 1px;
-  padding: 0 14px;
-  border-left: 1.5px dashed var(--line);
-}
-.kg-slate__lines li:first-child {
-  padding-left: 0;
-  border-left: 0;
 }
 .kg-slate .kg-eq {
   justify-content: flex-start;
@@ -408,16 +495,7 @@
   line-height: 32px;
 }
 .kg-slate .kg-chip__label {
-  font-size: 11px;
-  padding: 0 6px;
-}
-.kg-slate__note {
-  font-size: 13px;
-  font-weight: 600;
-  color: #2f8a57;
-}
-.kg-slate__lines li[data-note-only] .kg-slate__note {
-  font-size: 15px;
+  display: none;
 }
 .kg-slate__run {
   flex: none;
@@ -617,22 +695,6 @@
   background: color-mix(in srgb, var(--accent-2) 14%, var(--card));
   font-weight: 700;
 }
-.kg-knob-list {
-  display: grid;
-  gap: 12px;
-}
-.kg-knob-group {
-  display: grid;
-  gap: 10px;
-  padding: 12px;
-  border: var(--hair);
-  border-radius: 14px;
-  background: var(--paper);
-}
-.kg-knob-group h4 {
-  margin: 0;
-  font-size: 15px;
-}
 
 /* ---------- Side panel ---------- */
 .kg-wb-side {
@@ -727,9 +789,71 @@
   width: 64px !important;
   height: 76px !important;
 }
-.kg-lab-parts {
+.kg-wb-panel[hidden] {
+  display: none;
+}
+.kg-wb-tabs__run .kg-wb-tabs__sym {
+  color: var(--accent);
+}
+
+/* ▶ চালাও tab: the math language, one numbered line each, the newest highlighted */
+.kg-code {
   display: grid;
-  gap: 8px;
+  gap: 6px;
+  margin: 0;
+  padding: 8px;
+  border-radius: 14px;
+  background: var(--paper);
+  list-style: none;
+}
+.kg-code li {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: center;
+  gap: 2px 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.kg-code__no {
+  grid-row: span 2;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+  color: var(--ink-soft);
+}
+.kg-code li[data-current] {
+  background: color-mix(in srgb, var(--accent) 14%, var(--card));
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+}
+.kg-code .kg-eq {
+  justify-content: flex-start;
+}
+.kg-code__note {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2f8a57;
+}
+.kg-code__actions {
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+/* অনুশীলন: the question card over its picture on the stage */
+.kg-practice-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+.kg-qcard {
+  padding: 10px 14px;
+  border: var(--hair);
+  border-radius: 20px;
+  background: var(--card);
+}
+.kg-qcard .kg-bubble {
+  font-size: 20px;
 }
 
 /* Challenge ladder */
@@ -1068,50 +1192,67 @@ a.kg-lcard:hover {
     aspect-ratio: 800 / 640;
     border-radius: 16px;
   }
-  /* Phones: the slate and the action bar move under the stage; the dock lies along its bottom. */
+  /* Phones: the run pill sits above the stage; the rail and the action bar move under it. */
   .kg-wb-toy {
     gap: 8px;
   }
-  .kg-canvas__scene,
-  .kg-wb-toy[data-dock='true'] .kg-canvas__scene,
-  .kg-wb-toy:has(.kg-actionbar) .kg-canvas__scene {
+  .kg-wb-toy .kg-canvas__scene,
+  .kg-wb-toy:has(.kg-actionbar) .kg-canvas__scene,
+  .kg-wb-toy[data-slate='true'] .kg-canvas__scene {
     inset: 6px;
   }
-  .kg-wb-toy[data-dock='true'] .kg-canvas__scene {
-    bottom: 58px;
-  }
-  .kg-dock {
-    top: auto;
-    right: auto;
-    left: 50%;
-    bottom: 8px;
-    transform: translateX(-50%);
-    flex-direction: row;
-    gap: 3px;
-    padding: 4px 6px;
-  }
-  .kg-dock__sep {
-    width: 1px;
-    height: 24px;
-  }
+  .kg-dock,
+  .kg-wb-toy[data-dock='knobs'] .kg-dock,
   .kg-slate,
   .kg-actionbar {
     position: static;
+    width: auto;
+    max-width: none;
+    max-height: none;
+    transform: none;
   }
-  .kg-wb-toy[data-slate='true'] .kg-canvas__scene {
-    top: 6px;
+  .kg-dock,
+  .kg-wb-toy[data-dock='knobs'] .kg-dock {
+    order: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px 12px;
+    padding: 8px;
+  }
+  .kg-rail-knobs {
+    flex: 1 1 100%;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    overflow: visible;
+  }
+  .kg-rail-knobs__title {
+    grid-column: 1 / -1;
+  }
+  .kg-rail-knob:has(.kg-rail-knob__tiles) {
+    grid-column: 1 / -1;
+  }
+  .kg-rail-knob__tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .kg-dock__tools,
+  .kg-wb-toy[data-dock='knobs'] .kg-dock__tools {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-top: 0;
+    border-top: 0;
+    gap: 4px;
+  }
+  .kg-actionbar {
+    order: 3;
   }
   .kg-slate {
     order: -1;
-    flex-wrap: wrap;
   }
   .kg-slate__title {
     max-width: none;
     flex: 1;
-  }
-  .kg-slate__lines {
-    order: 3;
-    flex-basis: 100%;
   }
   .kg-stage-caption {
     max-width: 70%;

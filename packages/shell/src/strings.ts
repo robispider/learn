@@ -88,7 +88,8 @@ export const S = {
   showMath: { bn: 'গণিতের ভাষা দেখাও/লুকাও', en: 'Show or hide the maths' },
   playIt: { bn: 'চালাও', en: 'Play' },
   pause: { bn: 'থামাও', en: 'Pause' },
-  knobsInLab: { bn: 'এটি বদলাতে চাও? ‘বদলে দেখি’-তে যাও।', en: 'Want to change this? Go to ‘Experiment’.' },
+  oneStep: { bn: 'এক ধাপ', en: 'One step' },
+  lockedWhilePlaying: { bn: 'চলার সময় বদলানো যাবে না', en: 'No changes while it plays' },  knobsInLab: { bn: 'এটি বদলাতে চাও? ‘বদলে দেখি’-তে যাও।', en: 'Want to change this? Go to ‘Experiment’.' },
   goLab: { bn: 'বদলে দেখি', en: 'Experiment' },
   labIntro: {
     bn: 'এখানে সব কিছু বদলানো যায়! সংখ্যা বদলাও, ▶ চাপো, দেখো কী হয়। তারপর চ্যালেঞ্জগুলো চেষ্টা করো।',

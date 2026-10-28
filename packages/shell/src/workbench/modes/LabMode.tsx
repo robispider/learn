@@ -8,7 +8,6 @@ import { DialogueLine } from '../../components/Dialogue';
 import { useLang, useT } from '../../hooks';
 import { PRAISE, S } from '../../strings';
 import { Slot } from '../context';
-import { KnobList } from '../Knobs';
 import { PanelHead } from '../PanelBits';
 import { StepCard } from '../StepCard';
 import { ToyStage, useLessonToy } from '../ToyStage';
@@ -16,7 +15,7 @@ import { ToyStage, useLessonToy } from '../ToyStage';
 const LEVEL_STARS = ['', '★', '★★', '★★★'];
 
 /**
- * 🎛️ বদলে দেখি: the toy with every knob unlocked. Free play, or a ladder of challenges that add
+ * 🎛️ বদলে দেখি: the toy with every knob unlocked (on the stage's left edge). Free play, or a ladder of challenges that add
  * complexity step by step (often solved by changing the parts, not just by playing).
  */
 export function LabMode({
@@ -61,7 +60,6 @@ export function LabMode({
     [ch, solved, succeed, lt.toy],
   );
 
-  const parts = lt.toy.parts?.(lt.state, lang) ?? [];
   const nextIndex = lab.challenges.findIndex((c, i) => i > pick_ && !solvedIds.includes(c.id));
 
   return (
@@ -99,10 +97,6 @@ export function LabMode({
         ) : (
           <DialogueLine speaker={book.data.companion} text={S.labIntro} pose="point" />
         )}
-        <section className="kg-lab-parts">
-          <span className="kg-kicker">🎛️ {t(S.changeParts)}</span>
-          <KnobList parts={parts} dispatch={lt.dispatch} lang={lang} />
-        </section>
         {lab.challenges.length > 0 && (
           <section className="kg-ladder">
             <span className="kg-kicker">
