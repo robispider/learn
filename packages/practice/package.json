@@ -1,0 +1,9 @@
+{
+  "name": "@khelaghor/practice",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc -p .", "test": "vitest run" },
+  "dependencies": { "@khelaghor/core": "workspace:*", "@khelaghor/i18n": "workspace:*", "@khelaghor/ui": "workspace:*", "react": "^19.2.0", "@types/react": "^19.2.0", "motion": "^12.23.22" }
+}

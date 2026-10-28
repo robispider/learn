@@ -1,0 +1,31 @@
+{
+  "name": "@khelaghor/kit-operations",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./strings": "./src/strings.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@khelaghor/core": "workspace:*",
+    "@khelaghor/i18n": "workspace:*",
+    "@khelaghor/ui": "workspace:*",
+    "@khelaghor/art": "workspace:*",
+    "@khelaghor/stage": "workspace:*",
+    "@khelaghor/practice": "workspace:*",
+    "@khelaghor/voice": "workspace:*",
+    "react": "^19.2.0",
+    "@types/react": "^19.2.0",
+    "motion": "^12.23.22",
+    "zod": "^4.1.11",
+    "three": "~0.180.0",
+    "@types/three": "~0.180.0",
+    "@react-three/fiber": "^9.3.0",
+    "@react-three/drei": "^10.7.6"
+  }
+}

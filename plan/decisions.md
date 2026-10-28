@@ -12,7 +12,14 @@
 | D8 | 2026-10-28 | **Voice: TTS for now** (device TTS in Phase 0, pre-generated neural TTS files from Phase 1); recorded voice can replace it later | `@khelaghor/voice` fallback chain |
 | D9 | 2026-10-28 | **The project owner reviews all Bangla and NCTB alignment** | Export/import review workflow, see [07](07-adding-a-book.md#5-bangla-review-workflow) |
 
+| D10 | 2026-10-28 | **Tool versions pinned to well-known majors** for Phase 0: React 19, Vite 7, TypeScript 5.9, Vitest 3, ESLint 9, zod 4, Motion 12, three 0.180 + R3F 9, React Router 7 | Newer majors exist (Vite 8, TS 7, Vitest 5…); upgrade in one step later rather than mid-build |
+| D11 | 2026-10-28 | **In-app review page instead of Storybook** for Phase 0 (`#/review`: every pose, object, sticker and string, plus the review-file download) | The owner reviews on a phone, inside the real app. Storybook can come back when more people build toys |
+| D12 | 2026-10-28 | **Sound effects synthesised with Web Audio**, not Howler sprites | No audio files to make or download; Howler can return with recorded voice |
+| D13 | 2026-10-28 | **Topic 6.5 uses oranges (কমলালেবু)** as on book p.73, not lemons as the draft script said; remainder sentences use the book's "অবশিষ্ট", the chip label is "ভাগশেষ" | Follows the book; owner to confirm |
+| D14 | 2026-10-28 | Content JSON shows the **book's exact problems** (12 biscuits, Reza's 14 oranges, 19 chocolates) as short factual prompts; all art is redrawn | Book-aligned, not book-copied |
+
 ## Still open (decide when we get there)
+- Phase 0 leftovers: the ribbon-cutting Try step for 6.5 (needs a small ruler toy), Playwright smoke tests, a real low-end phone test of the 2.5-D view.
 - Cloud TTS service for pre-generated Bangla voice (compare 2–3 in Phase 1).
 - Second book after Class 3 Math.
 - Whether to add a combined `apps/portal` site.

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "c3-math",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@khelaghor/app-c3-math", "dev", "--port", "5173", "--strictPort"],
+      "port": 5173
+    }
+  ]
+}

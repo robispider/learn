@@ -1,0 +1,69 @@
+[
+  {
+    "id": "bhag",
+    "bn": "ভাগ",
+    "en": "division",
+    "definition": { "bn": "সমানভাবে ভাগ করে দেওয়ার হিসাব।", "en": "Working out equal shares." },
+    "chapter": 6,
+    "bookPage": 63
+  },
+  {
+    "id": "bhag-chihno",
+    "bn": "ভাগ চিহ্ন (÷)",
+    "en": "division sign (÷)",
+    "definition": { "bn": "ভাগ বোঝাতে ÷ চিহ্ন লেখা হয়।", "en": "The sign ÷ means divide." },
+    "chapter": 6,
+    "bookPage": 63
+  },
+  {
+    "id": "shomanbhabe",
+    "bn": "সমানভাবে",
+    "en": "equally",
+    "definition": { "bn": "সবাই একই সংখ্যক পায়।", "en": "Everyone gets the same number." },
+    "chapter": 6,
+    "bookPage": 63
+  },
+  {
+    "id": "bhajjo",
+    "bn": "ভাজ্য",
+    "en": "dividend",
+    "definition": { "bn": "যে সংখ্যাকে ভাগ করা হয়।", "en": "The number being divided." },
+    "chapter": 6,
+    "bookPage": 69
+  },
+  {
+    "id": "bhajok",
+    "bn": "ভাজক",
+    "en": "divisor",
+    "definition": { "bn": "যে সংখ্যা দিয়ে ভাগ করা হয়।", "en": "The number we divide by." },
+    "chapter": 6,
+    "bookPage": 69
+  },
+  {
+    "id": "bhagfol",
+    "bn": "ভাগফল",
+    "en": "quotient",
+    "definition": { "bn": "ভাগ করে যা পাওয়া যায়।", "en": "The answer of a division." },
+    "chapter": 6,
+    "bookPage": 69
+  },
+  {
+    "id": "bhagshesh",
+    "bn": "ভাগশেষ",
+    "en": "remainder",
+    "definition": {
+      "bn": "সমানভাবে ভাগ করার পর যা অবশিষ্ট থাকে। এটি ভাজকের চেয়ে ছোট।",
+      "en": "What is left after sharing equally. It is less than the divisor."
+    },
+    "chapter": 6,
+    "bookPage": 73
+  },
+  {
+    "id": "oboshishto",
+    "bn": "অবশিষ্ট",
+    "en": "left over",
+    "definition": { "bn": "যা বাকি থাকে।", "en": "What remains." },
+    "chapter": 6,
+    "bookPage": 73
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "name": "@khelaghor/art",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts", "./three": "./src/three/index.tsx" },
+  "scripts": { "typecheck": "tsc -p ." },
+  "dependencies": { "react": "^19.2.0", "@types/react": "^19.2.0", "motion": "^12.23.22", "three": "~0.180.0", "@types/three": "~0.180.0", "@react-three/fiber": "^9.3.0" }
+}

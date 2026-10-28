@@ -1,0 +1,17 @@
+{
+  "name": "@khelaghor/tooling",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@khelaghor/core": "workspace:*",
+    "@khelaghor/book-c3-math": "workspace:*",
+    "@khelaghor/shell": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0"
+  },
+  "scripts": {
+    "typecheck": "tsc -p ."
+  }
+}

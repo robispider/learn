@@ -12,6 +12,8 @@ Platform work and the first book (Class 3 Math) move together: each phase builds
 - `kit-operations`: **T5 Plates & Packs** with 2-D and 2.5-D renderers.
 
 **Book**: Class 3 Math topics 6.1, 6.2, 6.5 complete; first glossary review.
+
+**Status (2026-10-28): built.** Everything above exists except: Storybook (replaced by the in-app review page, D11), Playwright, and Howler (D12). Checked in a desktop browser and a phone-sized viewport; bundle: shell + Division ≈ 197 KB gzip, 2.5-D chunk ≈ 240 KB gzip (lazy). The exit checks below are still to do.
 ✅ **Exit:** children finish the slice alone and find it fun; the owner approves the art direction and Bangla; the 2.5-D view runs smoothly on a low-end phone, or falls back cleanly.
 
 ## Phase 1 — MVP: Class 3 Math Ch. 1–8 (≈ 6–8 weeks)

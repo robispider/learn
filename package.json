@@ -1,0 +1,30 @@
+{
+  "name": "khelaghor",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.9",
+  "scripts": {
+    "dev": "pnpm --filter @khelaghor/app-c3-math dev",
+    "build": "turbo run build",
+    "preview": "pnpm --filter @khelaghor/app-c3-math preview",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "validate": "pnpm --filter @khelaghor/book-c3-math test",
+    "review:export": "tsx tooling/review-export.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@types/node": "^22.18.0",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.5",
+    "turbo": "^2.5.8",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "^8.44.0",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@khelaghor/book-c3-math",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./data": "./src/data.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@khelaghor/core": "workspace:*",
+    "@khelaghor/i18n": "workspace:*",
+    "@khelaghor/kit-operations": "workspace:*",
+    "@khelaghor/stage": "workspace:*",
+    "@khelaghor/practice": "workspace:*",
+    "@khelaghor/shell": "workspace:*",
+    "react": "^19.2.0",
+    "@types/react": "^19.2.0",
+    "@khelaghor/art": "workspace:*"
+  }
+}
