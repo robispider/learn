@@ -1,0 +1,18 @@
+# Decisions log
+
+| # | Date | Decision | Notes |
+|---|---|---|---|
+| D1 | 2026-10-28 | **Folder layout: `class-<N>/<subject>/`**, one book per folder (first: `class-3/math/`) | Lets several subjects of one class sit side by side |
+| D2 | 2026-10-28 | **Platform vision and plan live at the top level** (`/plan`); books hold only book-specific plans | Shared by all classes and subjects |
+| D3 | 2026-10-28 | **Shared packages and kits** (`/packages`): platform packages + subject kits; book folders hold content and thin apps | Avoids rebuilding the same toys per book. See [04](04-packages-and-kits.md) |
+| D4 | 2026-10-28 | **Platform name খেলাঘর**; first app **তৃতীয় শ্রেণির গণিত খেলাঘর** | Book apps are named `<শ্রেণি> <বিষয়> খেলাঘর`; package scope `@khelaghor/*` |
+| D5 | 2026-10-28 | **Stack: TypeScript + Vite + React; SVG + Motion for 2-D; isometric SVG or R3F orthographic for 2.5-D; three.js via react-three-fiber + drei for 3-D; optional Rapier physics; pnpm + Turborepo monorepo** | Handles 2-D, 2.5-D and 3-D on one stage with one input model, keeps Bangla text in the DOM. See [05](05-tech-stack.md) |
+| D6 | 2026-10-28 | **First slice: Class 3 Math, Ch. 6 Division** (6.1, 6.2, 6.5) | Richest visual metaphor; exercises all shared parts |
+| D7 | 2026-10-28 | **Art is generated in code** (parametric SVG characters + object library; procedural 3-D) | No illustrator. See [06](06-art-and-voice.md) |
+| D8 | 2026-10-28 | **Voice: TTS for now** (device TTS in Phase 0, pre-generated neural TTS files from Phase 1); recorded voice can replace it later | `@khelaghor/voice` fallback chain |
+| D9 | 2026-10-28 | **The project owner reviews all Bangla and NCTB alignment** | Export/import review workflow, see [07](07-adding-a-book.md#5-bangla-review-workflow) |
+
+## Still open (decide when we get there)
+- Cloud TTS service for pre-generated Bangla voice (compare 2–3 in Phase 1).
+- Second book after Class 3 Math.
+- Whether to add a combined `apps/portal` site.
